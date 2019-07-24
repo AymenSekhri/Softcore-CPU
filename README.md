@@ -51,8 +51,8 @@ Sometimes programmers needs to define a certain constants or strings to be used 
 | CMP r4,imm32     | 0x11   | 6    | 0x11/r4/imm32 | 2            |
 | ROR r4,imm32     | 0x12   | 6    | 0x12/r4/imm32 | 2            | Accepts values 1,8,16 and 24 |
 | ROL r4,imm32     | 0x13   | 6    | 0x13/r4/imm32 | 2            | Accepts values 1,8,16 and 24 |
-| INC              | 0x15   | 2    | 0x15/r4\.00   | 2            |           
-| DEC              | 0x16   | 2    | 0x16/r4\.00   | 2            |
+| INC r4           | 0x15   | 2    | 0x15/r4\.00   | 2            |           
+| DEC r4           | 0x16   | 2    | 0x16/r4\.00   | 2            |
 | PUSH r4          | 0x20   | 2    | 0x20/00\.r4   | 6            |
 | PUSH imm32       | 0x21   | 5    | 0x21/imm32    | 6            |
 | POP r4           | 0x22   | 2    | 0x22/r4\.00   | 7            |
@@ -61,22 +61,22 @@ Sometimes programmers needs to define a certain constants or strings to be used 
 | CALL m32         | 0x23   | 5    | 0x23/m32      | 8            |
 | CALL r4          | 0x24   | 2    | 0x24/00\.r4   | 8            |
 | RET              | 0x22   | 2    | 0x22/4\.00    | 7            | RET = POP IP                 |
-| JZ               | 0x40   | 5    | 0x40/m32      | 1            |
-| JS               | 0x41   | 5    | 0x41/m32      | 1            |
-| JO               | 0x42   | 5    | 0x42/m32      | 1            |
-| JL               | 0x43   | 5    | 0x43/m32      | 1            |
-| JG               | 0x44   | 5    | 0x44/m32      | 1            |
-| JNZ              | 0x45   | 5    | 0x45/m32      | 1            |
-| JNS              | 0x46   | 5    | 0x46/m32      | 1            |
-| JNO              | 0x47   | 5    | 0x47/m32      | 1            |
-| JZ               | 0x48   | 2    | 0x48/00\.r4   | 1            |
-| JS               | 0x49   | 2    | 0x49/00\.r4   | 1            |
-| JO               | 0x4A   | 2    | 0x4A/00\.r4   | 1            |
-| JL               | 0x4B   | 2    | 0x4B/00\.r4   | 1            |
-| JG               | 0x4C   | 2    | 0x4C/00\.r4   | 1            |
-| JNZ              | 0x4D   | 2    | 0x4D/00\.r4   | 1            |
-| JNS              | 0x4E   | 2    | 0x4E/00\.r4   | 1            |
-| JNO              | 0x4F   | 2    | 0x4F/00\.r4   | 1            |
+| JZ  r4           | 0x40   | 5    | 0x40/m32      | 1            |
+| JS  r4           | 0x41   | 5    | 0x41/m32      | 1            |
+| JO  r4           | 0x42   | 5    | 0x42/m32      | 1            |
+| JL  r4           | 0x43   | 5    | 0x43/m32      | 1            |
+| JG  r4           | 0x44   | 5    | 0x44/m32      | 1            |
+| JNZ r4           | 0x45   | 5    | 0x45/m32      | 1            |
+| JNS r4           | 0x46   | 5    | 0x46/m32      | 1            |
+| JNO r4           | 0x47   | 5    | 0x47/m32      | 1            |
+| JZ  m32          | 0x48   | 2    | 0x48/00\.r4   | 1            |
+| JS  m32        | 0x49   | 2    | 0x49/00\.r4   | 1            |
+| JO  m32        | 0x4A   | 2    | 0x4A/00\.r4   | 1            |
+| JL  m32        | 0x4B   | 2    | 0x4B/00\.r4   | 1            |
+| JG  m32        | 0x4C   | 2    | 0x4C/00\.r4   | 1            |
+| JNZ m32        | 0x4D   | 2    | 0x4D/00\.r4   | 1            |
+| JNS m32           | 0x4E   | 2    | 0x4E/00\.r4   | 1            |
+| JNO m32             | 0x4F   | 2    | 0x4F/00\.r4   | 1            |
 | OUT Port,r4      | 0x50   | 3    | 0x50/r4/imm8  | 1            |
 | NOP              | 0x90   | 1    | 0x90          | 1            |
 | HLT              | 0xF0   | 1    | 0xF0          | 1            |

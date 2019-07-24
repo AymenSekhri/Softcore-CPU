@@ -9,14 +9,14 @@ It is possible to insert comments anywhere the code by using double forward slas
 Since the address of certain instruction or data is dependent on the previous instructions, any modification of the first instructions must be followed with updating all addresses, here is where labels are useful they can allow the user to avoid dealing with addresses in any way. A label can be defined by using any name followed by a colon then the instruction or data desired to address. The name of the label must be alphanumeric characters or an underscore. To use the label, the user must write the @ symbol followed by the name of the label.
 
 
-![GitHub](https://github.com/AymenSekhri/SoftCore-CPU/blob/master/Images/1.png)
+![GitHub](https://github.com/AymenSekhri/ISoftcore-CPU/blob/master/Images/1.png)
 
 
 ### Data Definitions
 Sometimes programmers needs to define a certain constants or strings to be used by the program, this assembler allows to use 3 types of data: bytes, integers and strings. The bytes are simple 8bit numbers that can be defined by DB keyword followed by the bytes, it is possible to define array of bytes by separating them with spaces or tabs. The integers are 32bit numbers which can be defined by the keyword DD, it is possible to define an array with the same way as bytes too. Finally, Strings can be defined using keyword DS followed by the ASCII string between double quotes (note that the strings are null terminated). 
 
 
-![GitHub](https://github.com/AymenSekhri/SoftCore-CPU/blob/master/Images/2.png)
+![GitHub](https://github.com/AymenSekhri/ISoftcore-CPU/blob/master/Images/2.png)
 
 
 ## The CPU Instruction Set

@@ -1,0 +1,436 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+Entity ControlUnit is 
+	Port(Clk : in std_logic;
+		DataIn : in std_logic_vector(31 downto 0);
+		DataOut : out std_logic_vector(31 downto 0);
+		Flags : in std_logic_vector(31 downto 0);
+		Control : in std_logic_vector(3 downto 0);
+		Prog_Mode,Data_Ready :in std_logic;
+		AsycroData : in std_logic_vector(31 downto 0);
+		B_OE,A_OE,B_WE,A_WE,D_OE,C_OE,C_WE,D_WE,IP_OE,IP_WE,SP_OE,BP_OE,SP_WE,BP_WE,MAR_OE,MAR_WE,MBRO_OE,MBRO_WE,RAM_WE,MBRI_OE,MBRI_WE,ALU_OE,ALU_A_WE,ALU_B_WE: out std_logic;
+		ALU_OP:out std_logic_vector(3 downto 0);
+		DeviceControl:out std_logic_vector(7 downto 0));
+End Entity;
+Architecture CPU of ControlUnit is
+Signal MicroCounter : std_logic_vector(3 downto 0):= (others=>'0');
+Signal IR : std_logic_vector(63 downto 0):= (others=>'0');
+Signal Prog_Data : std_logic_vector(31 downto 0):= (others=>'0');
+Signal Prog_Address : std_logic_vector(31 downto 0):= (others=>'0');
+Signal CUDataOut : std_logic_vector(31 downto 0):= (others=>'0');
+TYPE State_Type IS (Idle,Fetch0,Fetch1,Fetch2,Fetch3,Fetch4,Fetch5,Fetch6,Fetch7,Fetch8,Fetch9,Fetch10,Fetch11,Fetch12,Fetch13,Fetch14,Fetch15,HALT,
+					MovRImm,RMem1,RMem2,RMem3,RMem4,
+					WMem2,WMem3,WMem4,
+					Prog_Wait,Prog_SetData,Prog_SetAdd,Prog_WM,CPU_Reset);
+TYPE State_Type2 IS (Programming_MODE,EXECUTION_MODE);
+SIGNAL State : State_Type := Fetch0;
+SIGNAL CPU_State : State_Type2 := EXECUTION_MODE;
+Signal IR_WE,CU_OE : std_logic :='0';
+Signal SteadyCounter : std_logic_vector(10 downto 0):= (others=>'0');
+Begin
+	Process(Clk)
+	Begin
+		if Clk'event and Clk='0' and IR_WE = '1' Then
+			IR <= IR(31 downto 0) & DataIn;
+		End If;
+	End Process;
+	Process(State)
+	Begin
+		If State = Prog_Wait OR State = Prog_SetData OR State = Prog_SetAdd OR State = Prog_WM Then
+			CPU_State <= Programming_MODE;
+		Else
+			CPU_State <= EXECUTION_MODE;
+		End if;
+	End Process;
+
+	Process (Clk)
+	Begin
+		
+		If CLk'event and Clk='1' Then
+			If State = Idle Then
+				If SteadyCounter = 10 Then
+					SteadyCounter <= (others => '0');
+					State <= Fetch0;
+				Else
+					SteadyCounter <= SteadyCounter + 1;
+				End if;
+			ElsIf CPU_State = EXECUTION_MODE AND Prog_Mode = '1' Then
+				State <= Prog_Wait;
+			Else
+				Case State is 
+					When Idle => 
+						State <= Fetch0;
+					When Fetch0 => 
+						MicroCounter <= x"0";
+						State <= Fetch1;
+					When Fetch1 => 
+						State <= Fetch2;
+					When Fetch2 => 
+						State <= Fetch3;
+					When Fetch3 => 
+						State <= Fetch4;
+					When Fetch4 => 
+						State <= Fetch5;
+					When Fetch5 => 
+						State <= Fetch6;
+					When Fetch6 => 
+						State <= Fetch7;
+					When Fetch7 => 
+						State <= Fetch8;
+					When Fetch8 => 
+						State <= Fetch9;
+					When Fetch9 => 
+						State <= Fetch10;
+					When Fetch10 => 
+						State <= Fetch11;
+					When Fetch11 => 
+						State <= Fetch12;
+					When Fetch12 => 
+						State <= Fetch13;
+					When Fetch13 => 
+						State <= Fetch14;
+					When Fetch14 => 
+						State <= Fetch15;
+					When Fetch15 =>
+					
+						if IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25" OR IR(63 downto 56) = x"90" OR (IR(63 downto 56) >= x"40" AND IR(63 downto 56) <= x"4F" ) OR (IR(63 downto 56) >= x"01" AND IR(63 downto 56) <= x"24") OR IR(63 downto 56) <= x"30" OR IR(63 downto 56) <= x"31" OR IR(63 downto 56) = x"50" Then
+							State <= MovRImm;
+						Else 
+							State <= HALT;
+						End if;
+					When MovRImm => 
+						If ((IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25") AND MicroCounter = 0) OR ((IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"13" ) AND MicroCounter < 2 ) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= MovRImm;
+						Elsif ((IR(63 downto 56) >= x"03" AND IR(63 downto 56) <= x"04" ) AND MicroCounter = 0) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= RMem1;
+						Elsif ((IR(63 downto 56) = x"05" OR IR(63 downto 56) = x"14") AND MicroCounter = 0) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= MovRImm;
+						Elsif ((IR(63 downto 56) = x"05" OR IR(63 downto 56) = x"14") AND MicroCounter = 1) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= WMem2;
+						Elsif ((IR(63 downto 56) = x"20" OR IR(63 downto 56) = x"21") AND MicroCounter < 2) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= MovRImm;
+						Elsif ((IR(63 downto 56) = x"20" OR IR(63 downto 56) = x"21") AND MicroCounter = 2) Then
+							State <= WMem2;
+						Elsif ((IR(63 downto 56) = x"22") AND MicroCounter < 1) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= MovRImm;
+						Elsif ((IR(63 downto 56) = x"22") AND MicroCounter = 1) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= RMem1;
+						Elsif ((IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"24") AND MicroCounter < 3) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= MovRImm;
+						Elsif ((IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"23") AND MicroCounter = 3) Then
+							MicroCounter <= MicroCounter + 1;
+							State <= WMem2;
+						Else
+							State <= Fetch0;
+						End if;
+					When RMem1 => 
+						State <= RMem2;
+					When RMem2 => 
+						State <= RMem3;
+					When RMem3 => 
+						State <= RMem4;
+					When RMem4 => 
+						State <= MovRImm;
+					When  WMem2 =>
+						State <= WMem3;
+					When  WMem3 =>
+						State <= WMem4;
+					When  WMem4 =>
+						State <= Fetch0;
+					--Prog_Wait,Prog_SetData,Prog_SetAdd,Prog_WM
+					--Prog_Mode,Data_Ready
+					When Prog_Wait =>
+						if Prog_Mode = '0' Then
+							State <= CPU_Reset;
+						Elsif Data_Ready = '1' Then
+							Prog_Data <= AsycroData;
+							State <= Prog_SetData;
+						End if;
+					When Prog_SetData =>
+						State <= Prog_SetAdd;
+					When Prog_SetAdd =>
+						State <= Prog_WM;
+					When Prog_WM =>
+						Prog_Address <= Prog_Address + 4;
+						State <= Prog_Wait;
+					When  CPU_Reset =>
+						Prog_Address <= x"00000000";
+						State <= Fetch0;
+					When HALT => 
+						State <= HALT;
+					When Others =>
+						State <= HALT;
+				End Case;
+			End if;
+			
+		End if;
+	End Process;
+	
+	Process (State)
+	Begin
+		
+		ALU_OP <= x"0";
+		IR_WE <= '0';
+		CU_OE <= '0';
+		B_OE<= '0';A_OE<= '0';B_WE<= '0';A_WE<= '0';D_OE<= '0';C_OE<= '0';C_WE<= '0';D_WE<= '0';IP_OE<= '0';IP_WE<= '0';SP_OE<= '0';BP_OE<= '0';SP_WE<= '0';BP_WE<= '0';MAR_OE<= '0';MAR_WE<= '0';MBRO_OE<= '0';MBRO_WE<= '0';RAM_WE<= '0';MBRI_OE<= '0';MBRI_WE<= '0';ALU_OE<= '0';ALU_A_WE<= '0';ALU_B_WE<= '0';DeviceControl<= x"00";
+		Case State is
+			-- Fetch Cycle
+			When Fetch0 => 	  -- MAR <- PC
+				MAR_WE <= '1';
+				IP_OE  <= '1';
+			When  Fetch1 => -- IP <- MBR
+				MAR_OE <= '1';
+			When  Fetch2 =>
+				MAR_OE <= '1';
+				MBRO_WE <= '1';
+			When  Fetch3 => 
+				MAR_OE <= '1';
+			When  Fetch4 =>
+				MAR_OE <= '1';
+				MBRO_WE <= '1';
+			When  Fetch5 =>
+				MAR_OE <= '1';
+				MBRO_OE <= '1';
+				IR_WE <= '1';
+			When  Fetch6 => -- ALU_A <- PC
+				IP_OE <= '1';
+				ALU_A_WE <= '1';
+			When  Fetch7 => -- MAR <- ALU_A + 4 : PC + 4
+				MAR_WE <= '1';
+				ALU_OE <= '1';
+				ALU_OP <= x"B";
+			-- Second Part Of Instruction
+			When  Fetch8 => -- IP <- MBR
+				MAR_OE <= '1';
+			When  Fetch9 =>
+				MAR_OE <= '1';
+				MBRO_WE <= '1';
+			When  Fetch10 =>
+				MAR_OE <= '1';
+			When  Fetch11 =>
+				MAR_OE <= '1';
+				MBRO_WE <= '1';
+			When  Fetch12 =>
+				MAR_OE <= '1';
+				MBRO_OE <= '1';
+				IR_WE <= '1';
+			When  Fetch13 => -- ALU_B <- Size
+				-- Determine Instructions Size
+				ALU_B_WE <= '1';
+				CU_OE <= '1';
+				If IR(63 downto 56) = x"14" OR IR(63 downto 56) = x"03" OR IR(63 downto 56) = x"01" OR (IR(63 downto 56) >= x"0C" AND IR(63 downto 56) <= x"13") Then -- MOV r32,imm32
+					CUDataOut <= x"00000006";
+				Elsif IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25" OR (IR(63 downto 56) >= x"48" AND IR(63 downto 56) <= x"4F" ) OR IR(63 downto 56) = x"24" OR IR(63 downto 56) = x"22" OR IR(63 downto 56) = x"20" OR IR(63 downto 56) = x"05" OR IR(63 downto 56) = x"04" OR IR(63 downto 56) = x"02" OR (IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"0B") Then
+					CUDataOut <= x"00000002";
+				Elsif (IR(63 downto 56) >= x"40" AND IR(63 downto 56) <= x"47" ) OR IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"21" OR IR(63 downto 56) = x"30" Then
+					CUDataOut <= x"00000005";
+				Elsif IR(63 downto 56) = x"50" Then
+					CUDataOut <= x"00000003";
+				End If;
+			When  Fetch14 => -- ALU_A <- PC
+				IP_OE <= '1';
+				ALU_A_WE <= '1';
+			When  Fetch15 => -- PC <- ALU_A + 1 : PC + 1
+				IP_WE <= '1';
+				ALU_OE <= '1';
+				ALU_OP <= x"E";	
+			When  MovRImm =>
+				------------------------ Write To -------------------------
+				If ((IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25") AND MicroCounter = 1) OR (IR(63 downto 56) = x"22" AND MicroCounter = 2) OR ( (IR(63 downto 56) = x"03" OR IR(63 downto 56) = x"4" ) AND MicroCounter = 1) OR IR(63 downto 56) = x"01" Or IR(63 downto 56) = x"02" OR ((IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"13" AND IR(63 downto 56) /= x"0B" AND IR(63 downto 56) /= x"11" ) AND MicroCounter = 2) Then 
+					If 	  IR(55 downto 52) = x"0" Then
+						A_WE <= '1';
+					Elsif IR(55 downto 52) = x"1" Then
+						B_WE <= '1';
+					Elsif IR(55 downto 52) = x"2" Then
+						C_WE <= '1';
+					Elsif IR(55 downto 52) = x"3" Then
+						D_WE <= '1';
+					Elsif IR(55 downto 52) = x"4" Then
+						IP_WE <= '1';
+					Elsif IR(55 downto 52) = x"5" Then
+						SP_WE <= '1';
+					Elsif IR(55 downto 52) = x"6" Then
+						BP_WE <= '1';
+					End if;
+				Elsif IR(63 downto 56) = x"50" Then
+					DeviceControl <= IR(47 downto 40);
+				Elsif IR(63 downto 56) = x"30" OR IR(63 downto 56) = x"31" Then
+					IP_WE <= '1';
+				Elsif (IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"13" ) AND (MicroCounter = 0 OR MicroCounter = 1) Then
+					If MicroCounter = 0 Then
+						ALU_A_WE <= '1';
+					ElsIf MicroCounter = 1 Then
+						ALU_B_WE <= '1';
+					End if;
+				Elsif (((IR(63 downto 56) >= x"03" AND IR(63 downto 56) <= x"05") OR IR(63 downto 56) = x"14") AND MicroCounter = 0 ) Then
+					MAR_WE <= '1';
+				Elsif ( IR(63 downto 56) = x"05" OR IR(63 downto 56) = x"14" ) AND MicroCounter = 1 Then
+					MBRI_WE <= '1';
+				Elsif ((IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25") AND MicroCounter = 0) OR ((IR(63 downto 56) = x"20" OR IR(63 downto 56) = x"21" OR IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"24") AND MicroCounter = 0) Then
+					ALU_A_WE <= '1';
+				Elsif ((IR(63 downto 56) = x"20" OR IR(63 downto 56) = x"21" OR IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"24") AND MicroCounter = 1) Then
+					SP_WE  <='1';
+					MAR_WE <='1';
+				Elsif (( IR(63 downto 56) >= x"20" AND IR(63 downto 56) <= x"21" ) AND MicroCounter = 2) Then
+					MBRI_WE <= '1';
+				Elsif (( IR(63 downto 56)= x"22" ) AND MicroCounter = 0) Then
+					ALU_A_WE <= '1';
+					MAR_WE <='1';
+				Elsif (( IR(63 downto 56)= x"22" ) AND MicroCounter = 1) Then
+					SP_WE  <='1';
+				Elsif (( IR(63 downto 56)= x"23" OR IR(63 downto 56)= x"24" ) AND MicroCounter = 2) Then
+					MBRI_WE <='1';
+				Elsif (( IR(63 downto 56)= x"23" OR IR(63 downto 56)= x"24" ) AND MicroCounter = 3) Then
+					IP_WE <='1';
+				Elsif (IR(63 downto 56) >= x"40" AND IR(63 downto 56) <= x"4F" ) Then
+					If ((IR(63 downto 56)= x"40" OR IR(63 downto 56)= x"48" ) AND Flags(31)= '1') OR ((IR(63 downto 56)= x"41" OR IR(63 downto 56)= x"49" ) AND Flags(30)= '1') OR((IR(63 downto 56)= x"42" OR IR(63 downto 56)= x"4A" ) AND Flags(29)= '1') OR ((IR(63 downto 56)= x"43" OR IR(63 downto 56)= x"4B" ) AND Flags(28)= '1') OR ((IR(63 downto 56)= x"44" OR IR(63 downto 56)= x"4C" ) AND Flags(27)= '1') OR ((IR(63 downto 56)= x"45" OR IR(63 downto 56)= x"4D" ) AND Flags(31)= '0') OR ((IR(63 downto 56)= x"46" OR IR(63 downto 56)= x"4E" ) AND Flags(30)= '0') OR ((IR(63 downto 56)= x"47" OR IR(63 downto 56)= x"4F" ) AND Flags(29)= '0') Then
+						IP_WE <='1';
+					End if ;
+				End If;
+				-------------------------- Read From -----------------------
+				If   ( IR(63 downto 56) = x"14" AND MicroCounter = 1) OR ( IR(63 downto 56) = x"03" AND MicroCounter = 0 ) OR IR(63 downto 56) = x"01" OR ((IR(63 downto 56) >= x"0C" AND IR(63 downto 56) <= x"13" ) AND MicroCounter = 1 ) Then 
+					CUDataOut <= IR(47 downto 16);
+					CU_OE <= '1';
+				Elsif (IR(63 downto 56) >= x"40" AND IR(63 downto 56) <= x"47" ) OR ( IR(63 downto 56) = x"23"  AND MicroCounter = 3) OR IR(63 downto 56) = x"30" OR (IR(63 downto 56) = x"21" AND MicroCounter = 2) Then
+					CUDataOut <= IR(55 downto 24);
+					CU_OE <= '1';
+				Elsif (( IR(63 downto 56) = x"22" ) AND MicroCounter = 2) OR (IR(63 downto 56) >= x"03" AND IR(63 downto 56) <= x"04" AND MicroCounter = 1 ) Then
+					MAR_OE <= '1';
+					MBRO_OE <= '1';
+				Elsif (IR(63 downto 56) >= x"48" AND IR(63 downto 56) <= x"4F" ) OR ( IR(63 downto 56) = x"24"  AND MicroCounter = 3) OR (IR(63 downto 56) = x"20" AND MicroCounter = 2) OR ( IR(63 downto 56) = x"05" AND MicroCounter = 1 ) OR ( IR(63 downto 56) = x"04" AND MicroCounter = 0 ) OR IR(63 downto 56) = x"31" OR IR(63 downto 56) = x"02" OR IR(63 downto 56) = x"50" OR ((IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"B" ) AND MicroCounter = 1 ) Then
+					If    IR(51 downto 48) = x"0" Then
+						A_OE <= '1';
+					Elsif IR(51 downto 48) = x"1" Then
+						B_OE <= '1';
+					Elsif IR(51 downto 48) = x"2" Then
+						C_OE <= '1';
+					Elsif IR(51 downto 48) = x"3" Then
+						D_OE <= '1';
+					Elsif IR(51 downto 48) = x"4" Then
+						IP_OE <= '1';
+					Elsif IR(51 downto 48) = x"5" Then
+						SP_OE <= '1';
+					Elsif IR(51 downto 48) = x"6" Then
+						BP_OE <= '1';
+					End if;
+				Elsif ((IR(63 downto 56) >= x"C" AND IR(63 downto 56) <= x"13" ) AND MicroCounter = 0 ) OR ((IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25") AND MicroCounter = 0) OR ((IR(63 downto 56) = x"05"  OR IR(63 downto 56) = x"14" ) AND MicroCounter = 0) OR ((IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"0B" ) AND MicroCounter = 0) Then
+					If    IR(55 downto 52) = x"0" Then
+						A_OE <= '1';
+					Elsif IR(55 downto 52) = x"1" Then
+						B_OE <= '1';
+					Elsif IR(55 downto 52) = x"2" Then
+						C_OE <= '1';
+					Elsif IR(55 downto 52) = x"3" Then
+						D_OE <= '1';
+					Elsif IR(55 downto 52) = x"4" Then
+						IP_OE <= '1';
+					Elsif IR(55 downto 52) = x"5" Then
+						SP_OE <= '1';
+					Elsif IR(55 downto 52) = x"6" Then
+						BP_OE <= '1';
+					End if;
+				Elsif ((IR(63 downto 56) = x"26" OR IR(63 downto 56) = x"25") AND MicroCounter = 1) OR ((IR(63 downto 56) >= x"06" AND IR(63 downto 56) <= x"13" ) AND MicroCounter = 2) Then
+					ALU_OE <= '1';
+					If IR(63 downto 56) = x"06" OR IR(63 downto 56) = x"0C" Then
+						ALU_OP <= x"1";
+					ElsIf IR(63 downto 56) = x"07" OR IR(63 downto 56) = x"0D" Then
+						ALU_OP <= x"2";
+					ElsIf IR(63 downto 56) = x"08" OR IR(63 downto 56) = x"0E" Then
+						ALU_OP <= x"D";
+					ElsIf IR(63 downto 56) = x"09" OR IR(63 downto 56) = x"0F" Then
+						ALU_OP <= x"3";
+					ElsIf IR(63 downto 56) = x"0A" OR IR(63 downto 56) = x"10" Then
+						ALU_OP <= x"4";
+					ElsIf IR(63 downto 56) = x"0B" OR IR(63 downto 56) = x"11" Then
+						ALU_OP <= x"0";
+					ElsIf IR(63 downto 56) = x"12"  Then
+						ALU_OP <= x"7";
+					ElsIf IR(63 downto 56) = x"13"  Then
+						ALU_OP <= x"8";
+					ElsIf IR(63 downto 56) = x"25" Then
+						ALU_OP <= x"9";
+					ElsIf IR(63 downto 56) = x"26" Then
+						ALU_OP <= x"A";
+					End If;
+				Elsif (( IR(63 downto 56) >= x"20" AND IR(63 downto 56) <= x"24" ) AND MicroCounter = 0) Then
+					SP_OE <= '1';
+				Elsif (( IR(63 downto 56) >= x"20" AND IR(63 downto 56) <= x"24" ) AND MicroCounter = 1) Then
+					ALU_OE <= '1';
+					If  IR(63 downto 56) = x"20" OR IR(63 downto 56) = x"21" OR IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"24"  Then
+						ALU_OP <= x"C";
+					Elsif  IR(63 downto 56) >= x"22"  Then
+						ALU_OP <= x"B";
+					End if;
+				Elsif (( IR(63 downto 56) = x"23" OR IR(63 downto 56) = x"24" ) AND MicroCounter = 2) Then
+					IP_OE <= '1';
+				End if;
+			When  RMem1 =>
+				MAR_OE <= '1';
+			When  RMem2 =>
+				MAR_OE <= '1';
+				MBRO_WE <= '1';
+			When  RMem3 => 
+				MAR_OE <= '1';
+			When  RMem4 =>
+				MAR_OE <= '1';
+				MBRO_WE <= '1';
+			When  WMem2 =>
+				MAR_OE <= '1';
+				MBRI_OE <= '1';
+				RAM_WE <= '1';
+			When  WMem3 =>
+				MAR_OE <= '1';
+				MBRI_OE <= '1';
+			When  WMem4 =>
+				MAR_OE <= '1';
+				MBRI_OE <= '1';
+				RAM_WE <= '1';
+			--Prog_Wait,Prog_SetData,Prog_SetAdd,Prog_WM
+			--Prog_Mode,Data_Ready
+			When Prog_Wait =>
+			When Prog_SetData =>
+				MBRI_WE <= '1';
+				CU_OE <= '1';
+				CUDataOut <= Prog_Data;
+			When Prog_SetAdd =>
+				MAR_WE <= '1';
+				CU_OE <= '1';
+				CUDataOut <= Prog_Address;
+			When Prog_WM =>
+				MAR_OE <= '1';
+				MBRI_OE <= '1';
+				RAM_WE <= '1';
+			When  CPU_RESET =>
+				CUDataOut <= x"00000000";
+				CU_OE <= '1';
+				A_WE <= '1';
+				B_WE <= '1';
+				C_WE <= '1';
+				D_WE <= '1';
+				IP_WE <= '1';
+				SP_WE <= '1';
+				BP_WE <= '1';
+				MAR_WE <= '1';
+				MBRI_WE <= '1';
+				ALU_A_WE <= '1';
+				ALU_B_WE <= '1';
+				
+			When  Idle => 
+				DeviceControl <= x"80";
+			When Others =>
+				
+		End Case;
+	End Process;
+	-- /////////////////////////////////
+	DataOut <= CUDataOut When CU_OE = '1' Else
+				(others => 'Z');
+End Architecture;

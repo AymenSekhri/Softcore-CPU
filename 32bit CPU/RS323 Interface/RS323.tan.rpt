@@ -1,0 +1,480 @@
+Classic Timing Analyzer report for RS323
+Thu Feb 28 23:09:47 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'Clk'
+  7. tsu
+  8. tco
+  9. th
+ 10. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                 ;
++------------------------------+-------+---------------+----------------------------------+-------------------+--------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From              ; To                 ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+-------------------+--------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 8.363 ns                         ; Data_in           ; BitClksCounter[12] ; --         ; Clk      ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 9.418 ns                         ; Parallel_Data[7]  ; Dataout[7]         ; Clk        ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -4.966 ns                        ; Data_in           ; UART_State.Idle    ; --         ; Clk      ; 0            ;
+; Clock Setup: 'Clk'           ; N/A   ; None          ; 151.81 MHz ( period = 6.587 ns ) ; BitClksCounter[2] ; Parallel_Data[7]   ; Clk        ; Clk      ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                   ;                    ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+-------------------+--------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C5AF256I8       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; -40                ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 125                ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clk             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'Clk'                                                                                                                                                                                                                                      ;
++-----------------------------------------+-----------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                 ; To                   ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 151.81 MHz ( period = 6.587 ns )                    ; BitClksCounter[2]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 6.294 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 153.87 MHz ( period = 6.499 ns )                    ; BitClksCounter[3]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 6.206 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 155.52 MHz ( period = 6.430 ns )                    ; BitClksCounter[10]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 6.139 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 160.75 MHz ( period = 6.221 ns )                    ; BitClksCounter[4]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.928 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 163.75 MHz ( period = 6.107 ns )                    ; BitClksCounter[9]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.814 ns                ;
+; N/A                                     ; 164.20 MHz ( period = 6.090 ns )                    ; BitClksCounter[2]    ; BitCounter[1]        ; Clk        ; Clk      ; None                        ; None                      ; 5.797 ns                ;
+; N/A                                     ; 166.61 MHz ( period = 6.002 ns )                    ; BitClksCounter[3]    ; BitCounter[1]        ; Clk        ; Clk      ; None                        ; None                      ; 5.709 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; BitClksCounter[0]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.695 ns                ;
+; N/A                                     ; 167.11 MHz ( period = 5.984 ns )                    ; BitClksCounter[1]    ; UART_State.Stop_Bit  ; Clk        ; Clk      ; None                        ; None                      ; 5.718 ns                ;
+; N/A                                     ; 167.14 MHz ( period = 5.983 ns )                    ; BitClksCounter[1]    ; UART_State.Start_Bit ; Clk        ; Clk      ; None                        ; None                      ; 5.717 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.21 MHz ( period = 5.945 ns )                    ; BitClksCounter[7]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.652 ns                ;
+; N/A                                     ; 168.55 MHz ( period = 5.933 ns )                    ; BitClksCounter[10]   ; BitCounter[1]        ; Clk        ; Clk      ; None                        ; None                      ; 5.642 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.09 MHz ( period = 5.914 ns )                    ; BitClksCounter[13]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.623 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.12 MHz ( period = 5.913 ns )                    ; BitClksCounter[5]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.620 ns                ;
+; N/A                                     ; 169.46 MHz ( period = 5.901 ns )                    ; BitClksCounter[2]    ; UART_State.Start_Bit ; Clk        ; Clk      ; None                        ; None                      ; 5.635 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 169.92 MHz ( period = 5.885 ns )                    ; BitClksCounter[15]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.594 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.04 MHz ( period = 5.881 ns )                    ; BitClksCounter[6]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.588 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 170.44 MHz ( period = 5.867 ns )                    ; BitClksCounter[12]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.576 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 171.09 MHz ( period = 5.845 ns )                    ; BitClksCounter[16]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.554 ns                ;
+; N/A                                     ; 172.03 MHz ( period = 5.813 ns )                    ; BitClksCounter[3]    ; UART_State.Start_Bit ; Clk        ; Clk      ; None                        ; None                      ; 5.547 ns                ;
+; N/A                                     ; 173.55 MHz ( period = 5.762 ns )                    ; UART_State.Start_Bit ; UART_State.Stop_Bit  ; Clk        ; Clk      ; None                        ; None                      ; 5.498 ns                ;
+; N/A                                     ; 173.58 MHz ( period = 5.761 ns )                    ; UART_State.Start_Bit ; UART_State.Start_Bit ; Clk        ; Clk      ; None                        ; None                      ; 5.497 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.06 MHz ( period = 5.745 ns )                    ; BitClksCounter[8]    ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.452 ns                ;
+; N/A                                     ; 174.09 MHz ( period = 5.744 ns )                    ; BitClksCounter[10]   ; UART_State.Start_Bit ; Clk        ; Clk      ; None                        ; None                      ; 5.480 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.55 MHz ( period = 5.729 ns )                    ; BitClksCounter[14]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.438 ns                ;
+; N/A                                     ; 174.70 MHz ( period = 5.724 ns )                    ; BitClksCounter[4]    ; BitCounter[1]        ; Clk        ; Clk      ; None                        ; None                      ; 5.431 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 175.56 MHz ( period = 5.696 ns )                    ; BitClksCounter[11]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.405 ns                ;
+; N/A                                     ; 178.25 MHz ( period = 5.610 ns )                    ; BitClksCounter[9]    ; BitCounter[1]        ; Clk        ; Clk      ; None                        ; None                      ; 5.317 ns                ;
+; N/A                                     ; 178.70 MHz ( period = 5.596 ns )                    ; BitClksCounter[2]    ; UART_State.Stop_Bit  ; Clk        ; Clk      ; None                        ; None                      ; 5.330 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[18]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[17]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[20]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[19]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[13]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[15]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[14]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[16]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[11]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[10]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.05 MHz ( period = 5.554 ns )                    ; UART_State.Idle      ; BitClksCounter[12]   ; Clk        ; Clk      ; None                        ; None                      ; 5.290 ns                ;
+; N/A                                     ; 180.67 MHz ( period = 5.535 ns )                    ; BitClksCounter[4]    ; UART_State.Start_Bit ; Clk        ; Clk      ; None                        ; None                      ; 5.269 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[1]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[0]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[2]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[4]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[3]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[9]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[5]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[6]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[8]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.23 MHz ( period = 5.518 ns )                    ; UART_State.Idle      ; BitClksCounter[7]    ; Clk        ; Clk      ; None                        ; None                      ; 5.256 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.46 MHz ( period = 5.511 ns )                    ; BitClksCounter[18]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.220 ns                ;
+; N/A                                     ; 181.55 MHz ( period = 5.508 ns )                    ; BitClksCounter[3]    ; UART_State.Stop_Bit  ; Clk        ; Clk      ; None                        ; None                      ; 5.242 ns                ;
+; N/A                                     ; 182.12 MHz ( period = 5.491 ns )                    ; BitClksCounter[0]    ; BitCounter[1]        ; Clk        ; Clk      ; None                        ; None                      ; 5.198 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; BitCounter[0]        ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[0]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[1]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[2]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[3]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[4]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[5]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[6]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.25 MHz ( period = 5.487 ns )                    ; BitClksCounter[17]   ; Parallel_Data[7]     ; Clk        ; Clk      ; None                        ; None                      ; 5.196 ns                ;
+; N/A                                     ; 182.88 MHz ( period = 5.468 ns )                    ; BitClksCounter[2]    ; BitClksCounter[8]    ; Clk        ; Clk      ; None                        ; None                      ; 5.204 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                      ;                      ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-------------------------------------------------------------------------------+
+; tsu                                                                           ;
++-------+--------------+------------+---------+----------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From    ; To                   ; To Clock ;
++-------+--------------+------------+---------+----------------------+----------+
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[18]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[17]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[20]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[19]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[13]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[15]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[14]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[16]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[11]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[10]   ; Clk      ;
+; N/A   ; None         ; 8.363 ns   ; Data_in ; BitClksCounter[12]   ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[1]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[0]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[2]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[4]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[3]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[9]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[5]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[6]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[8]    ; Clk      ;
+; N/A   ; None         ; 8.327 ns   ; Data_in ; BitClksCounter[7]    ; Clk      ;
+; N/A   ; None         ; 6.620 ns   ; Data_in ; UART_State.Start_Bit ; Clk      ;
+; N/A   ; None         ; 6.315 ns   ; Data_in ; UART_State.Stop_Bit  ; Clk      ;
+; N/A   ; None         ; 5.397 ns   ; Data_in ; Parallel_Data[7]     ; Clk      ;
+; N/A   ; None         ; 5.232 ns   ; Data_in ; UART_State.Idle      ; Clk      ;
++-------+--------------+------------+---------+----------------------+----------+
+
+
++--------------------------------------------------------------------------------+
+; tco                                                                            ;
++-------+--------------+------------+------------------+------------+------------+
+; Slack ; Required tco ; Actual tco ; From             ; To         ; From Clock ;
++-------+--------------+------------+------------------+------------+------------+
+; N/A   ; None         ; 9.418 ns   ; Parallel_Data[7] ; Dataout[7] ; Clk        ;
+; N/A   ; None         ; 9.416 ns   ; Parallel_Data[2] ; Dataout[2] ; Clk        ;
+; N/A   ; None         ; 9.347 ns   ; Parallel_Data[1] ; Dataout[1] ; Clk        ;
+; N/A   ; None         ; 8.708 ns   ; Parallel_Data[5] ; Dataout[5] ; Clk        ;
+; N/A   ; None         ; 8.663 ns   ; Parallel_Data[6] ; Dataout[6] ; Clk        ;
+; N/A   ; None         ; 8.579 ns   ; Parallel_Data[3] ; Dataout[3] ; Clk        ;
+; N/A   ; None         ; 8.542 ns   ; Parallel_Data[0] ; Dataout[0] ; Clk        ;
+; N/A   ; None         ; 7.776 ns   ; Parallel_Data[4] ; Dataout[4] ; Clk        ;
++-------+--------------+------------+------------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------+
+; th                                                                                  ;
++---------------+-------------+-----------+---------+----------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From    ; To                   ; To Clock ;
++---------------+-------------+-----------+---------+----------------------+----------+
+; N/A           ; None        ; -4.966 ns ; Data_in ; UART_State.Idle      ; Clk      ;
+; N/A           ; None        ; -5.131 ns ; Data_in ; Parallel_Data[7]     ; Clk      ;
+; N/A           ; None        ; -6.049 ns ; Data_in ; UART_State.Stop_Bit  ; Clk      ;
+; N/A           ; None        ; -6.354 ns ; Data_in ; UART_State.Start_Bit ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[1]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[0]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[2]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[4]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[3]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[9]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[5]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[6]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[8]    ; Clk      ;
+; N/A           ; None        ; -8.061 ns ; Data_in ; BitClksCounter[7]    ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[18]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[17]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[20]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[19]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[13]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[15]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[14]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[16]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[11]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[10]   ; Clk      ;
+; N/A           ; None        ; -8.097 ns ; Data_in ; BitClksCounter[12]   ; Clk      ;
++---------------+-------------+-----------+---------+----------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Feb 28 23:09:47 2019
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off RS323 -c RS323 --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "Clk" is an undefined clock
+Info: Clock "Clk" has Internal fmax of 151.81 MHz between source register "BitClksCounter[2]" and destination register "BitCounter[0]" (period= 6.587 ns)
+    Info: + Longest register to register delay is 6.294 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X26_Y13_N17; Fanout = 3; REG Node = 'BitClksCounter[2]'
+        Info: 2: + IC(1.440 ns) + CELL(0.499 ns) = 1.939 ns; Loc. = LCCOMB_X25_Y12_N24; Fanout = 1; COMB Node = 'Equal0~1'
+        Info: 3: + IC(0.394 ns) + CELL(0.614 ns) = 2.947 ns; Loc. = LCCOMB_X25_Y12_N0; Fanout = 6; COMB Node = 'Equal0~5'
+        Info: 4: + IC(0.401 ns) + CELL(0.206 ns) = 3.554 ns; Loc. = LCCOMB_X25_Y12_N4; Fanout = 11; COMB Node = 'Selector0~0'
+        Info: 5: + IC(1.885 ns) + CELL(0.855 ns) = 6.294 ns; Loc. = LCFF_X20_Y5_N21; Fanout = 4; REG Node = 'BitCounter[0]'
+        Info: Total cell delay = 2.174 ns ( 34.54 % )
+        Info: Total interconnect delay = 4.120 ns ( 65.46 % )
+    Info: - Smallest clock skew is -0.029 ns
+        Info: + Shortest clock path from clock "Clk" to destination register is 2.731 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.090 ns) = 1.090 ns; Loc. = PIN_H2; Fanout = 1; CLK Node = 'Clk'
+            Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.233 ns; Loc. = CLKCTRL_G2; Fanout = 35; COMB Node = 'Clk~clkctrl'
+            Info: 3: + IC(0.832 ns) + CELL(0.666 ns) = 2.731 ns; Loc. = LCFF_X20_Y5_N21; Fanout = 4; REG Node = 'BitCounter[0]'
+            Info: Total cell delay = 1.756 ns ( 64.30 % )
+            Info: Total interconnect delay = 0.975 ns ( 35.70 % )
+        Info: - Longest clock path from clock "Clk" to source register is 2.760 ns
+            Info: 1: + IC(0.000 ns) + CELL(1.090 ns) = 1.090 ns; Loc. = PIN_H2; Fanout = 1; CLK Node = 'Clk'
+            Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.233 ns; Loc. = CLKCTRL_G2; Fanout = 35; COMB Node = 'Clk~clkctrl'
+            Info: 3: + IC(0.861 ns) + CELL(0.666 ns) = 2.760 ns; Loc. = LCFF_X26_Y13_N17; Fanout = 3; REG Node = 'BitClksCounter[2]'
+            Info: Total cell delay = 1.756 ns ( 63.62 % )
+            Info: Total interconnect delay = 1.004 ns ( 36.38 % )
+    Info: + Micro clock to output delay of source is 0.304 ns
+    Info: + Micro setup delay of destination is -0.040 ns
+Info: tsu for register "BitClksCounter[18]" (data pin = "Data_in", clock pin = "Clk") is 8.363 ns
+    Info: + Longest pin to register delay is 11.161 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.925 ns) = 0.925 ns; Loc. = PIN_D3; Fanout = 4; PIN Node = 'Data_in'
+        Info: 2: + IC(6.783 ns) + CELL(0.370 ns) = 8.078 ns; Loc. = LCCOMB_X20_Y5_N8; Fanout = 21; COMB Node = 'BitClksCounter[0]~26'
+        Info: 3: + IC(2.228 ns) + CELL(0.855 ns) = 11.161 ns; Loc. = LCFF_X26_Y12_N17; Fanout = 3; REG Node = 'BitClksCounter[18]'
+        Info: Total cell delay = 2.150 ns ( 19.26 % )
+        Info: Total interconnect delay = 9.011 ns ( 80.74 % )
+    Info: + Micro setup delay of destination is -0.040 ns
+    Info: - Shortest clock path from clock "Clk" to destination register is 2.758 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.090 ns) = 1.090 ns; Loc. = PIN_H2; Fanout = 1; CLK Node = 'Clk'
+        Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.233 ns; Loc. = CLKCTRL_G2; Fanout = 35; COMB Node = 'Clk~clkctrl'
+        Info: 3: + IC(0.859 ns) + CELL(0.666 ns) = 2.758 ns; Loc. = LCFF_X26_Y12_N17; Fanout = 3; REG Node = 'BitClksCounter[18]'
+        Info: Total cell delay = 1.756 ns ( 63.67 % )
+        Info: Total interconnect delay = 1.002 ns ( 36.33 % )
+Info: tco from clock "Clk" to destination pin "Dataout[7]" through register "Parallel_Data[7]" is 9.418 ns
+    Info: + Longest clock path from clock "Clk" to source register is 2.731 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.090 ns) = 1.090 ns; Loc. = PIN_H2; Fanout = 1; CLK Node = 'Clk'
+        Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.233 ns; Loc. = CLKCTRL_G2; Fanout = 35; COMB Node = 'Clk~clkctrl'
+        Info: 3: + IC(0.832 ns) + CELL(0.666 ns) = 2.731 ns; Loc. = LCFF_X20_Y5_N7; Fanout = 2; REG Node = 'Parallel_Data[7]'
+        Info: Total cell delay = 1.756 ns ( 64.30 % )
+        Info: Total interconnect delay = 0.975 ns ( 35.70 % )
+    Info: + Micro clock to output delay of source is 0.304 ns
+    Info: + Longest register to pin delay is 6.383 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X20_Y5_N7; Fanout = 2; REG Node = 'Parallel_Data[7]'
+        Info: 2: + IC(3.347 ns) + CELL(3.036 ns) = 6.383 ns; Loc. = PIN_E1; Fanout = 0; PIN Node = 'Dataout[7]'
+        Info: Total cell delay = 3.036 ns ( 47.56 % )
+        Info: Total interconnect delay = 3.347 ns ( 52.44 % )
+Info: th for register "UART_State.Idle" (data pin = "Data_in", clock pin = "Clk") is -4.966 ns
+    Info: + Longest clock path from clock "Clk" to destination register is 2.758 ns
+        Info: 1: + IC(0.000 ns) + CELL(1.090 ns) = 1.090 ns; Loc. = PIN_H2; Fanout = 1; CLK Node = 'Clk'
+        Info: 2: + IC(0.143 ns) + CELL(0.000 ns) = 1.233 ns; Loc. = CLKCTRL_G2; Fanout = 35; COMB Node = 'Clk~clkctrl'
+        Info: 3: + IC(0.859 ns) + CELL(0.666 ns) = 2.758 ns; Loc. = LCFF_X25_Y12_N31; Fanout = 4; REG Node = 'UART_State.Idle'
+        Info: Total cell delay = 1.756 ns ( 63.67 % )
+        Info: Total interconnect delay = 1.002 ns ( 36.33 % )
+    Info: + Micro hold delay of destination is 0.306 ns
+    Info: - Shortest pin to register delay is 8.030 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.925 ns) = 0.925 ns; Loc. = PIN_D3; Fanout = 4; PIN Node = 'Data_in'
+        Info: 2: + IC(6.346 ns) + CELL(0.651 ns) = 7.922 ns; Loc. = LCCOMB_X25_Y12_N30; Fanout = 1; COMB Node = 'Selector3~0'
+        Info: 3: + IC(0.000 ns) + CELL(0.108 ns) = 8.030 ns; Loc. = LCFF_X25_Y12_N31; Fanout = 4; REG Node = 'UART_State.Idle'
+        Info: Total cell delay = 1.684 ns ( 20.97 % )
+        Info: Total interconnect delay = 6.346 ns ( 79.03 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 179 megabytes
+    Info: Processing ended: Thu Feb 28 23:09:47 2019
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+

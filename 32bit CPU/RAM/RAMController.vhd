@@ -1,0 +1,90 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+Entity RAMController is 
+	Port(MAR_WE,MAR_OE,CLK,MBRI_WE,MBRI_OE: in std_logic;
+		AddressIn : in std_logic_vector(31 downto 0);
+		DataIn : in std_logic_vector(31 downto 0);
+		DataOut : out std_logic_vector(31 downto 0);
+		ByteEnable: out std_logic_vector(3 downto 0);
+		Word : out std_logic;
+		FullAddressOut : out std_logic_vector(31 downto 0);
+		AddressOut : out std_logic_vector(31 downto 0);
+		MBRO_WE,RAM_WE: in std_logic);
+End Entity;
+Architecture CPU of RAMController is
+signal BlockAddress: std_logic_vector(31 downto 0) := (others=>'0');
+signal FullAddress: std_logic_vector(31 downto 0) := (others=>'0');
+signal InternalData: std_logic_vector(31 downto 0) := (others=>'0');
+signal Counter : std_logic_vector(1 downto 0) := "00";
+signal Slow,WordCounter :std_logic; 
+Begin 
+	
+	-- Address Resolve
+	
+	Process(CLK,MAR_OE) is
+	Begin
+		if MAR_OE = '0' Then 
+			WordCounter <= '0';
+		Elsif Clk'event and Clk= '0' And ((MAR_OE = '1' And MBRO_WE = '1') Or (MBRI_OE='1' And RAM_WE = '0')) Then 
+			WordCounter <= not WordCounter;
+		End if;
+		If Clk'event and Clk= '0' And MAR_WE = '1' Then 
+			BlockAddress <= "00" & AddressIn(31 downto 2);
+			FullAddress <= AddressIn;
+		End if;
+		
+	End Process;
+	
+	AddressOut <= BlockAddress + WordCounter when MAR_OE = '1' else
+					(others=>'Z');
+	FullAddressOut <= FullAddress when MAR_OE = '1' else
+					(others=>'Z');
+			
+	-- Data In Resolve
+	Process(CLK) is
+	Begin
+		if CLK'event and CLK= '0'and MBRI_WE = '1' Then
+			InternalData <= DataIn;
+		End If;
+	End Process;
+
+	Word <= WordCounter;
+	Process(InternalData,MBRI_OE,WordCounter,FullAddress) is
+	Begin
+		if MBRI_OE = '1' Then
+			if WordCounter = '0' then
+				if FullAddress(1 downto 0) = 0 then
+					ByteEnable <= "1111";
+					DataOut <= InternalData;
+				elsif FullAddress(1 downto 0) = 1 then
+					ByteEnable <= "0111";
+					DataOut <= x"00" & InternalData(31 downto 8);
+				elsif FullAddress(1 downto 0) = 2 then
+					ByteEnable <= "0011";
+					DataOut <=  x"0000" & InternalData(31 downto 16);
+				elsif FullAddress(1 downto 0) = 3 then
+					ByteEnable <= "0001";
+					DataOut <=  x"000000" & InternalData(31 downto 24);
+				End if;
+			elsif WordCounter = '1' then
+				if FullAddress(1 downto 0) = 0 then
+					ByteEnable <= "0000";
+					DataOut <= x"00000000";
+				elsif FullAddress(1 downto 0) = 1 then
+					ByteEnable <= "1000";
+					DataOut <= InternalData(7 downto 0) & x"000000";
+				elsif FullAddress(1 downto 0) = 2 then
+					ByteEnable <= "1100";
+					DataOut <= InternalData(15 downto 0) & x"0000";
+				elsif FullAddress(1 downto 0) = 3 then
+					ByteEnable <= "1110";
+					DataOut <= InternalData(23 downto 0) & x"00";
+				End if;
+			end if;
+		else
+			DataOut <= (others=>'Z');
+			ByteEnable <= (others=>'Z');
+		End If;
+	End Process;
+End Architecture;

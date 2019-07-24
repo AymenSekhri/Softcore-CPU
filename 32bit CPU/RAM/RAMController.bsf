@@ -1,0 +1,127 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 64 64 360 256)
+	(text "RAMController" (rect 5 0 98 15)(font "Arial" ))
+	(text "inst" (rect 8 173 31 188)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "MAR_WE" (rect 0 0 60 15)(font "Arial" ))
+		(text "MAR_WE" (rect 21 27 81 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "MAR_OE" (rect 0 0 57 15)(font "Arial" ))
+		(text "MAR_OE" (rect 21 43 78 58)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
+		(text "CLK" (rect 21 59 49 74)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 1))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "MBRI_WE" (rect 0 0 64 15)(font "Arial" ))
+		(text "MBRI_WE" (rect 21 75 85 90)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 1))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "MBRI_OE" (rect 0 0 62 15)(font "Arial" ))
+		(text "MBRI_OE" (rect 21 91 83 106)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "AddressIn[31..0]" (rect 0 0 105 15)(font "Arial" ))
+		(text "AddressIn[31..0]" (rect 21 107 126 122)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "DataIn[31..0]" (rect 0 0 81 15)(font "Arial" ))
+		(text "DataIn[31..0]" (rect 21 123 102 138)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 3))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "MBRO_WE" (rect 0 0 71 15)(font "Arial" ))
+		(text "MBRO_WE" (rect 21 139 92 154)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "RAM_WE" (rect 0 0 60 15)(font "Arial" ))
+		(text "RAM_WE" (rect 21 155 81 170)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 1))
+	)
+	(port
+		(pt 296 32)
+		(output)
+		(text "DataOut[31..0]" (rect 0 0 92 15)(font "Arial" ))
+		(text "DataOut[31..0]" (rect 183 27 275 42)(font "Arial" ))
+		(line (pt 296 32)(pt 280 32)(line_width 3))
+	)
+	(port
+		(pt 296 48)
+		(output)
+		(text "ByteEnable[3..0]" (rect 0 0 103 15)(font "Arial" ))
+		(text "ByteEnable[3..0]" (rect 172 43 275 58)(font "Arial" ))
+		(line (pt 296 48)(pt 280 48)(line_width 3))
+	)
+	(port
+		(pt 296 144)
+		(output)
+		(text "Word" (rect 0 0 34 15)(font "Arial" ))
+		(text "Word" (rect 241 139 275 154)(font "Arial" ))
+		(line (pt 296 144)(pt 280 144)(line_width 1))
+	)
+	(port
+		(pt 296 64)
+		(output)
+		(text "FullAddressOut[31..0]" (rect 0 0 139 15)(font "Arial" ))
+		(text "FullAddressOut[31..0]" (rect 136 59 275 74)(font "Arial" ))
+		(line (pt 296 64)(pt 280 64)(line_width 3))
+	)
+	(port
+		(pt 296 80)
+		(output)
+		(text "AddressOut[31..0]" (rect 0 0 115 15)(font "Arial" ))
+		(text "AddressOut[31..0]" (rect 160 75 275 90)(font "Arial" ))
+		(line (pt 296 80)(pt 280 80)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 280 176)(line_width 1))
+	)
+)

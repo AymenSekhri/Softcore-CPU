@@ -1,0 +1,26 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+Entity ClkControler is 
+	Port(CLK,HLT: in std_logic;
+		NewClk : out std_logic;
+		HighSpeedClk : out std_logic);
+End Entity;
+Architecture CPU of ClkControler is
+Signal Counter : std_logic_vector(27 downto 0) := (others=>'0');
+Begin
+	Process(Clk)
+	Begin
+		If Counter = 250000000 Then
+			Counter <= (others=>'0');
+		elsif CLK'event and CLK='1' and HLT='0' then
+				Counter <= Counter + 1;
+		End if;
+	End Process;
+
+	NewClk <= not Counter(9) when HLT = '0' else
+				'0';
+	HighSpeedClk <=  not Counter(0) when HLT = '0' else
+				'0';
+End Architecture;
+

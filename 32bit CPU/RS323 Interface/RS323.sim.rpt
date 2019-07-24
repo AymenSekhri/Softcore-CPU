@@ -1,0 +1,702 @@
+Simulator report for RS323
+Fri Mar 01 14:46:40 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 342 nodes    ;
+; Simulation Coverage         ;      41.81 % ;
+; Total Number of Transitions ; 2718         ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
++-----------------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                      ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Option                                                                                     ; Setting    ; Default Value ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+; Simulation mode                                                                            ; Functional ; Timing        ;
+; Start time                                                                                 ; 0 ns       ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF       ;               ;
+; Vector input source                                                                        ; RS323.vwf  ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On         ; On            ;
+; Check outputs                                                                              ; Off        ; Off           ;
+; Report simulation coverage                                                                 ; On         ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On         ; On            ;
+; Display missing 1-value coverage report                                                    ; On         ; On            ;
+; Display missing 0-value coverage report                                                    ; On         ; On            ;
+; Detect setup and hold time violations                                                      ; Off        ; Off           ;
+; Detect glitches                                                                            ; Off        ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off        ; Off           ;
+; Generate Signal Activity File                                                              ; Off        ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off        ; Off           ;
+; Group bus channels in simulation results                                                   ; Off        ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On         ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off        ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off        ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto       ; Auto          ;
++--------------------------------------------------------------------------------------------+------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      41.81 % ;
+; Total nodes checked                                 ; 342          ;
+; Total output ports checked                          ; 342          ;
+; Total output ports with complete 1/0-value coverage ; 143          ;
+; Total output ports with no 1/0-value coverage       ; 199          ;
+; Total output ports with no 1-value coverage         ; 199          ;
+; Total output ports with no 0-value coverage         ; 199          ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++----------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                            ;
++----------------------------------+----------------------------------+------------------+
+; Node Name                        ; Output Port Name                 ; Output Port Type ;
++----------------------------------+----------------------------------+------------------+
+; |RS232|UART_State~0              ; |RS232|UART_State~0              ; out              ;
+; |RS232|UART_State~1              ; |RS232|UART_State~1              ; out              ;
+; |RS232|UART_State~2              ; |RS232|UART_State~2              ; out              ;
+; |RS232|UART_State~3              ; |RS232|UART_State~3              ; out              ;
+; |RS232|Parallel_Data~0           ; |RS232|Parallel_Data~0           ; out              ;
+; |RS232|Parallel_Data~1           ; |RS232|Parallel_Data~1           ; out              ;
+; |RS232|Parallel_Data~2           ; |RS232|Parallel_Data~2           ; out              ;
+; |RS232|Parallel_Data~3           ; |RS232|Parallel_Data~3           ; out              ;
+; |RS232|Parallel_Data~4           ; |RS232|Parallel_Data~4           ; out              ;
+; |RS232|Parallel_Data~5           ; |RS232|Parallel_Data~5           ; out              ;
+; |RS232|Parallel_Data~6           ; |RS232|Parallel_Data~6           ; out              ;
+; |RS232|Parallel_Data~7           ; |RS232|Parallel_Data~7           ; out              ;
+; |RS232|Read_Read~0               ; |RS232|Read_Read~0               ; out              ;
+; |RS232|Parallel_Data~8           ; |RS232|Parallel_Data~8           ; out              ;
+; |RS232|Parallel_Data~9           ; |RS232|Parallel_Data~9           ; out              ;
+; |RS232|Parallel_Data~10          ; |RS232|Parallel_Data~10          ; out              ;
+; |RS232|Parallel_Data~11          ; |RS232|Parallel_Data~11          ; out              ;
+; |RS232|Parallel_Data~12          ; |RS232|Parallel_Data~12          ; out              ;
+; |RS232|Parallel_Data~13          ; |RS232|Parallel_Data~13          ; out              ;
+; |RS232|Parallel_Data~14          ; |RS232|Parallel_Data~14          ; out              ;
+; |RS232|Parallel_Data~15          ; |RS232|Parallel_Data~15          ; out              ;
+; |RS232|Read_Read~1               ; |RS232|Read_Read~1               ; out              ;
+; |RS232|UART_State~4              ; |RS232|UART_State~4              ; out              ;
+; |RS232|UART_State~5              ; |RS232|UART_State~5              ; out              ;
+; |RS232|UART_State~6              ; |RS232|UART_State~6              ; out              ;
+; |RS232|UART_State~7              ; |RS232|UART_State~7              ; out              ;
+; |RS232|BitClksCounter~18         ; |RS232|BitClksCounter~18         ; out              ;
+; |RS232|BitClksCounter~19         ; |RS232|BitClksCounter~19         ; out              ;
+; |RS232|BitClksCounter~20         ; |RS232|BitClksCounter~20         ; out              ;
+; |RS232|BitCounter[2]             ; |RS232|BitCounter[2]             ; regout           ;
+; |RS232|BitCounter~0              ; |RS232|BitCounter~0              ; out              ;
+; |RS232|BitCounter~1              ; |RS232|BitCounter~1              ; out              ;
+; |RS232|BitCounter~2              ; |RS232|BitCounter~2              ; out              ;
+; |RS232|BitCounter~3              ; |RS232|BitCounter~3              ; out              ;
+; |RS232|UART_State~8              ; |RS232|UART_State~8              ; out              ;
+; |RS232|UART_State~9              ; |RS232|UART_State~9              ; out              ;
+; |RS232|UART_State~10             ; |RS232|UART_State~10             ; out              ;
+; |RS232|UART_State~11             ; |RS232|UART_State~11             ; out              ;
+; |RS232|BitClksCounter~40         ; |RS232|BitClksCounter~40         ; out              ;
+; |RS232|BitClksCounter~41         ; |RS232|BitClksCounter~41         ; out              ;
+; |RS232|BitCounter~5              ; |RS232|BitCounter~5              ; out              ;
+; |RS232|BitCounter~6              ; |RS232|BitCounter~6              ; out              ;
+; |RS232|BitCounter~7              ; |RS232|BitCounter~7              ; out              ;
+; |RS232|UART_State~12             ; |RS232|UART_State~12             ; out              ;
+; |RS232|UART_State~13             ; |RS232|UART_State~13             ; out              ;
+; |RS232|UART_State~14             ; |RS232|UART_State~14             ; out              ;
+; |RS232|UART_State~15             ; |RS232|UART_State~15             ; out              ;
+; |RS232|Parallel_Data~16          ; |RS232|Parallel_Data~16          ; out              ;
+; |RS232|Parallel_Data~17          ; |RS232|Parallel_Data~17          ; out              ;
+; |RS232|Parallel_Data~18          ; |RS232|Parallel_Data~18          ; out              ;
+; |RS232|Parallel_Data~19          ; |RS232|Parallel_Data~19          ; out              ;
+; |RS232|Parallel_Data~20          ; |RS232|Parallel_Data~20          ; out              ;
+; |RS232|Parallel_Data~21          ; |RS232|Parallel_Data~21          ; out              ;
+; |RS232|Parallel_Data~22          ; |RS232|Parallel_Data~22          ; out              ;
+; |RS232|Parallel_Data~23          ; |RS232|Parallel_Data~23          ; out              ;
+; |RS232|BitCounter[1]             ; |RS232|BitCounter[1]             ; regout           ;
+; |RS232|Read_Read~2               ; |RS232|Read_Read~2               ; out              ;
+; |RS232|UART_State~16             ; |RS232|UART_State~16             ; out              ;
+; |RS232|UART_State~17             ; |RS232|UART_State~17             ; out              ;
+; |RS232|UART_State~18             ; |RS232|UART_State~18             ; out              ;
+; |RS232|UART_State~19             ; |RS232|UART_State~19             ; out              ;
+; |RS232|BitCounter[0]             ; |RS232|BitCounter[0]             ; regout           ;
+; |RS232|BitClksCounter[0]         ; |RS232|BitClksCounter[0]         ; regout           ;
+; |RS232|BitClksCounter[1]         ; |RS232|BitClksCounter[1]         ; regout           ;
+; |RS232|Read_Read                 ; |RS232|Read_Read                 ; regout           ;
+; |RS232|Parallel_Data[0]          ; |RS232|Parallel_Data[0]          ; regout           ;
+; |RS232|Parallel_Data[1]          ; |RS232|Parallel_Data[1]          ; regout           ;
+; |RS232|Parallel_Data[2]          ; |RS232|Parallel_Data[2]          ; regout           ;
+; |RS232|Parallel_Data[3]          ; |RS232|Parallel_Data[3]          ; regout           ;
+; |RS232|Parallel_Data[4]          ; |RS232|Parallel_Data[4]          ; regout           ;
+; |RS232|Parallel_Data[5]          ; |RS232|Parallel_Data[5]          ; regout           ;
+; |RS232|Parallel_Data[6]          ; |RS232|Parallel_Data[6]          ; regout           ;
+; |RS232|Parallel_Data[7]          ; |RS232|Parallel_Data[7]          ; regout           ;
+; |RS232|UART_State.Idle           ; |RS232|UART_State.Idle           ; regout           ;
+; |RS232|UART_State.Stop_Bit       ; |RS232|UART_State.Stop_Bit       ; regout           ;
+; |RS232|UART_State.Recieving_Data ; |RS232|UART_State.Recieving_Data ; regout           ;
+; |RS232|UART_State.Start_Bit      ; |RS232|UART_State.Start_Bit      ; regout           ;
+; |RS232|Clk                       ; |RS232|Clk                       ; out              ;
+; |RS232|Data_in                   ; |RS232|Data_in                   ; out              ;
+; |RS232|Data_Ready                ; |RS232|Data_Ready                ; pin_out          ;
+; |RS232|Dataout[0]                ; |RS232|Dataout[0]                ; pin_out          ;
+; |RS232|Dataout[1]                ; |RS232|Dataout[1]                ; pin_out          ;
+; |RS232|Dataout[2]                ; |RS232|Dataout[2]                ; pin_out          ;
+; |RS232|Dataout[3]                ; |RS232|Dataout[3]                ; pin_out          ;
+; |RS232|Dataout[4]                ; |RS232|Dataout[4]                ; pin_out          ;
+; |RS232|Dataout[5]                ; |RS232|Dataout[5]                ; pin_out          ;
+; |RS232|Dataout[6]                ; |RS232|Dataout[6]                ; pin_out          ;
+; |RS232|Dataout[7]                ; |RS232|Dataout[7]                ; pin_out          ;
+; |RS232|UART_State~20             ; |RS232|UART_State~20             ; out0             ;
+; |RS232|UART_State~22             ; |RS232|UART_State~22             ; out0             ;
+; |RS232|UART_State~24             ; |RS232|UART_State~24             ; out0             ;
+; |RS232|UART_State~26             ; |RS232|UART_State~26             ; out0             ;
+; |RS232|UART_State~28             ; |RS232|UART_State~28             ; out0             ;
+; |RS232|UART_State~32             ; |RS232|UART_State~32             ; out0             ;
+; |RS232|Selector0~0               ; |RS232|Selector0~0               ; out0             ;
+; |RS232|Selector0~3               ; |RS232|Selector0~3               ; out0             ;
+; |RS232|Selector0~4               ; |RS232|Selector0~4               ; out0             ;
+; |RS232|Selector1~0               ; |RS232|Selector1~0               ; out0             ;
+; |RS232|Selector1~2               ; |RS232|Selector1~2               ; out0             ;
+; |RS232|Selector1~3               ; |RS232|Selector1~3               ; out0             ;
+; |RS232|Selector2~0               ; |RS232|Selector2~0               ; out0             ;
+; |RS232|Selector2~1               ; |RS232|Selector2~1               ; out0             ;
+; |RS232|Selector2~2               ; |RS232|Selector2~2               ; out0             ;
+; |RS232|Selector3~0               ; |RS232|Selector3~0               ; out0             ;
+; |RS232|Selector3~1               ; |RS232|Selector3~1               ; out0             ;
+; |RS232|Selector3~3               ; |RS232|Selector3~3               ; out0             ;
+; |RS232|Selector3~4               ; |RS232|Selector3~4               ; out0             ;
+; |RS232|Selector4~0               ; |RS232|Selector4~0               ; out              ;
+; |RS232|Selector4~1               ; |RS232|Selector4~1               ; out              ;
+; |RS232|Selector5~0               ; |RS232|Selector5~0               ; out              ;
+; |RS232|Selector5~1               ; |RS232|Selector5~1               ; out              ;
+; |RS232|Selector6~0               ; |RS232|Selector6~0               ; out              ;
+; |RS232|Selector6~1               ; |RS232|Selector6~1               ; out              ;
+; |RS232|Selector7~0               ; |RS232|Selector7~0               ; out              ;
+; |RS232|Selector7~1               ; |RS232|Selector7~1               ; out              ;
+; |RS232|Selector8~0               ; |RS232|Selector8~0               ; out              ;
+; |RS232|Selector8~1               ; |RS232|Selector8~1               ; out              ;
+; |RS232|Selector9~0               ; |RS232|Selector9~0               ; out              ;
+; |RS232|Selector9~1               ; |RS232|Selector9~1               ; out              ;
+; |RS232|Selector10~0              ; |RS232|Selector10~0              ; out              ;
+; |RS232|Selector10~1              ; |RS232|Selector10~1              ; out              ;
+; |RS232|Selector11~0              ; |RS232|Selector11~0              ; out              ;
+; |RS232|Selector11~1              ; |RS232|Selector11~1              ; out              ;
+; |RS232|Selector12~0              ; |RS232|Selector12~0              ; out              ;
+; |RS232|Selector12~1              ; |RS232|Selector12~1              ; out              ;
+; |RS232|Selector32~0              ; |RS232|Selector32~0              ; out0             ;
+; |RS232|Selector32~1              ; |RS232|Selector32~1              ; out0             ;
+; |RS232|Selector32~2              ; |RS232|Selector32~2              ; out0             ;
+; |RS232|Selector33~0              ; |RS232|Selector33~0              ; out0             ;
+; |RS232|Selector33~1              ; |RS232|Selector33~1              ; out0             ;
+; |RS232|Selector33~2              ; |RS232|Selector33~2              ; out0             ;
+; |RS232|Selector33~3              ; |RS232|Selector33~3              ; out0             ;
+; |RS232|Add0~0                    ; |RS232|Add0~0                    ; out0             ;
+; |RS232|Add0~1                    ; |RS232|Add0~1                    ; out0             ;
+; |RS232|Add0~2                    ; |RS232|Add0~2                    ; out0             ;
+; |RS232|Add1~0                    ; |RS232|Add1~0                    ; out0             ;
+; |RS232|Add1~1                    ; |RS232|Add1~1                    ; out0             ;
+; |RS232|Add1~2                    ; |RS232|Add1~2                    ; out0             ;
+; |RS232|Add1~3                    ; |RS232|Add1~3                    ; out0             ;
+; |RS232|Add1~4                    ; |RS232|Add1~4                    ; out0             ;
+; |RS232|Equal0~0                  ; |RS232|Equal0~0                  ; out0             ;
+; |RS232|Equal1~0                  ; |RS232|Equal1~0                  ; out0             ;
+; |RS232|Equal2~0                  ; |RS232|Equal2~0                  ; out0             ;
++----------------------------------+----------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++--------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                 ;
++---------------------------+---------------------------+------------------+
+; Node Name                 ; Output Port Name          ; Output Port Type ;
++---------------------------+---------------------------+------------------+
+; |RS232|BitClksCounter~0   ; |RS232|BitClksCounter~0   ; out              ;
+; |RS232|BitClksCounter~1   ; |RS232|BitClksCounter~1   ; out              ;
+; |RS232|BitClksCounter~2   ; |RS232|BitClksCounter~2   ; out              ;
+; |RS232|BitClksCounter~3   ; |RS232|BitClksCounter~3   ; out              ;
+; |RS232|BitClksCounter~4   ; |RS232|BitClksCounter~4   ; out              ;
+; |RS232|BitClksCounter~5   ; |RS232|BitClksCounter~5   ; out              ;
+; |RS232|BitClksCounter~6   ; |RS232|BitClksCounter~6   ; out              ;
+; |RS232|BitClksCounter~7   ; |RS232|BitClksCounter~7   ; out              ;
+; |RS232|BitClksCounter~8   ; |RS232|BitClksCounter~8   ; out              ;
+; |RS232|BitClksCounter~9   ; |RS232|BitClksCounter~9   ; out              ;
+; |RS232|BitClksCounter~10  ; |RS232|BitClksCounter~10  ; out              ;
+; |RS232|BitClksCounter~11  ; |RS232|BitClksCounter~11  ; out              ;
+; |RS232|BitClksCounter~12  ; |RS232|BitClksCounter~12  ; out              ;
+; |RS232|BitClksCounter~13  ; |RS232|BitClksCounter~13  ; out              ;
+; |RS232|BitClksCounter~14  ; |RS232|BitClksCounter~14  ; out              ;
+; |RS232|BitClksCounter~15  ; |RS232|BitClksCounter~15  ; out              ;
+; |RS232|BitClksCounter~16  ; |RS232|BitClksCounter~16  ; out              ;
+; |RS232|BitClksCounter~17  ; |RS232|BitClksCounter~17  ; out              ;
+; |RS232|BitClksCounter~21  ; |RS232|BitClksCounter~21  ; out              ;
+; |RS232|BitClksCounter~22  ; |RS232|BitClksCounter~22  ; out              ;
+; |RS232|BitClksCounter~23  ; |RS232|BitClksCounter~23  ; out              ;
+; |RS232|BitClksCounter~24  ; |RS232|BitClksCounter~24  ; out              ;
+; |RS232|BitClksCounter~25  ; |RS232|BitClksCounter~25  ; out              ;
+; |RS232|BitClksCounter~26  ; |RS232|BitClksCounter~26  ; out              ;
+; |RS232|BitClksCounter~27  ; |RS232|BitClksCounter~27  ; out              ;
+; |RS232|BitClksCounter~28  ; |RS232|BitClksCounter~28  ; out              ;
+; |RS232|BitClksCounter~29  ; |RS232|BitClksCounter~29  ; out              ;
+; |RS232|BitClksCounter~30  ; |RS232|BitClksCounter~30  ; out              ;
+; |RS232|BitClksCounter~31  ; |RS232|BitClksCounter~31  ; out              ;
+; |RS232|BitClksCounter~32  ; |RS232|BitClksCounter~32  ; out              ;
+; |RS232|BitClksCounter~33  ; |RS232|BitClksCounter~33  ; out              ;
+; |RS232|BitClksCounter~34  ; |RS232|BitClksCounter~34  ; out              ;
+; |RS232|BitClksCounter~35  ; |RS232|BitClksCounter~35  ; out              ;
+; |RS232|BitClksCounter~36  ; |RS232|BitClksCounter~36  ; out              ;
+; |RS232|BitClksCounter~37  ; |RS232|BitClksCounter~37  ; out              ;
+; |RS232|BitClksCounter~38  ; |RS232|BitClksCounter~38  ; out              ;
+; |RS232|BitClksCounter~39  ; |RS232|BitClksCounter~39  ; out              ;
+; |RS232|BitCounter~4       ; |RS232|BitCounter~4       ; out              ;
+; |RS232|BitCounter[3]      ; |RS232|BitCounter[3]      ; regout           ;
+; |RS232|BitClksCounter[2]  ; |RS232|BitClksCounter[2]  ; regout           ;
+; |RS232|BitClksCounter[3]  ; |RS232|BitClksCounter[3]  ; regout           ;
+; |RS232|BitClksCounter[4]  ; |RS232|BitClksCounter[4]  ; regout           ;
+; |RS232|BitClksCounter[5]  ; |RS232|BitClksCounter[5]  ; regout           ;
+; |RS232|BitClksCounter[6]  ; |RS232|BitClksCounter[6]  ; regout           ;
+; |RS232|BitClksCounter[7]  ; |RS232|BitClksCounter[7]  ; regout           ;
+; |RS232|BitClksCounter[8]  ; |RS232|BitClksCounter[8]  ; regout           ;
+; |RS232|BitClksCounter[9]  ; |RS232|BitClksCounter[9]  ; regout           ;
+; |RS232|BitClksCounter[10] ; |RS232|BitClksCounter[10] ; regout           ;
+; |RS232|BitClksCounter[11] ; |RS232|BitClksCounter[11] ; regout           ;
+; |RS232|BitClksCounter[12] ; |RS232|BitClksCounter[12] ; regout           ;
+; |RS232|BitClksCounter[13] ; |RS232|BitClksCounter[13] ; regout           ;
+; |RS232|BitClksCounter[14] ; |RS232|BitClksCounter[14] ; regout           ;
+; |RS232|BitClksCounter[15] ; |RS232|BitClksCounter[15] ; regout           ;
+; |RS232|BitClksCounter[16] ; |RS232|BitClksCounter[16] ; regout           ;
+; |RS232|BitClksCounter[17] ; |RS232|BitClksCounter[17] ; regout           ;
+; |RS232|BitClksCounter[18] ; |RS232|BitClksCounter[18] ; regout           ;
+; |RS232|BitClksCounter[19] ; |RS232|BitClksCounter[19] ; regout           ;
+; |RS232|BitClksCounter[20] ; |RS232|BitClksCounter[20] ; regout           ;
+; |RS232|Selector0~1        ; |RS232|Selector0~1        ; out0             ;
+; |RS232|Selector0~2        ; |RS232|Selector0~2        ; out0             ;
+; |RS232|Selector1~1        ; |RS232|Selector1~1        ; out0             ;
+; |RS232|Selector1~4        ; |RS232|Selector1~4        ; out0             ;
+; |RS232|Selector2~3        ; |RS232|Selector2~3        ; out0             ;
+; |RS232|Selector2~4        ; |RS232|Selector2~4        ; out0             ;
+; |RS232|Selector3~2        ; |RS232|Selector3~2        ; out0             ;
+; |RS232|Selector13~0       ; |RS232|Selector13~0       ; out0             ;
+; |RS232|Selector13~1       ; |RS232|Selector13~1       ; out0             ;
+; |RS232|Selector13~2       ; |RS232|Selector13~2       ; out0             ;
+; |RS232|Selector13~3       ; |RS232|Selector13~3       ; out0             ;
+; |RS232|Selector13~4       ; |RS232|Selector13~4       ; out0             ;
+; |RS232|Selector14~0       ; |RS232|Selector14~0       ; out0             ;
+; |RS232|Selector14~1       ; |RS232|Selector14~1       ; out0             ;
+; |RS232|Selector14~2       ; |RS232|Selector14~2       ; out0             ;
+; |RS232|Selector14~3       ; |RS232|Selector14~3       ; out0             ;
+; |RS232|Selector14~4       ; |RS232|Selector14~4       ; out0             ;
+; |RS232|Selector15~0       ; |RS232|Selector15~0       ; out0             ;
+; |RS232|Selector15~1       ; |RS232|Selector15~1       ; out0             ;
+; |RS232|Selector15~2       ; |RS232|Selector15~2       ; out0             ;
+; |RS232|Selector15~3       ; |RS232|Selector15~3       ; out0             ;
+; |RS232|Selector15~4       ; |RS232|Selector15~4       ; out0             ;
+; |RS232|Selector16~0       ; |RS232|Selector16~0       ; out0             ;
+; |RS232|Selector16~1       ; |RS232|Selector16~1       ; out0             ;
+; |RS232|Selector16~2       ; |RS232|Selector16~2       ; out0             ;
+; |RS232|Selector16~3       ; |RS232|Selector16~3       ; out0             ;
+; |RS232|Selector16~4       ; |RS232|Selector16~4       ; out0             ;
+; |RS232|Selector17~0       ; |RS232|Selector17~0       ; out0             ;
+; |RS232|Selector17~1       ; |RS232|Selector17~1       ; out0             ;
+; |RS232|Selector17~2       ; |RS232|Selector17~2       ; out0             ;
+; |RS232|Selector17~3       ; |RS232|Selector17~3       ; out0             ;
+; |RS232|Selector17~4       ; |RS232|Selector17~4       ; out0             ;
+; |RS232|Selector18~0       ; |RS232|Selector18~0       ; out0             ;
+; |RS232|Selector18~1       ; |RS232|Selector18~1       ; out0             ;
+; |RS232|Selector18~2       ; |RS232|Selector18~2       ; out0             ;
+; |RS232|Selector18~3       ; |RS232|Selector18~3       ; out0             ;
+; |RS232|Selector18~4       ; |RS232|Selector18~4       ; out0             ;
+; |RS232|Selector19~0       ; |RS232|Selector19~0       ; out0             ;
+; |RS232|Selector19~1       ; |RS232|Selector19~1       ; out0             ;
+; |RS232|Selector19~2       ; |RS232|Selector19~2       ; out0             ;
+; |RS232|Selector19~3       ; |RS232|Selector19~3       ; out0             ;
+; |RS232|Selector19~4       ; |RS232|Selector19~4       ; out0             ;
+; |RS232|Selector20~0       ; |RS232|Selector20~0       ; out0             ;
+; |RS232|Selector20~1       ; |RS232|Selector20~1       ; out0             ;
+; |RS232|Selector20~2       ; |RS232|Selector20~2       ; out0             ;
+; |RS232|Selector20~3       ; |RS232|Selector20~3       ; out0             ;
+; |RS232|Selector20~4       ; |RS232|Selector20~4       ; out0             ;
+; |RS232|Selector21~0       ; |RS232|Selector21~0       ; out0             ;
+; |RS232|Selector21~1       ; |RS232|Selector21~1       ; out0             ;
+; |RS232|Selector21~2       ; |RS232|Selector21~2       ; out0             ;
+; |RS232|Selector21~3       ; |RS232|Selector21~3       ; out0             ;
+; |RS232|Selector21~4       ; |RS232|Selector21~4       ; out0             ;
+; |RS232|Selector22~0       ; |RS232|Selector22~0       ; out0             ;
+; |RS232|Selector22~1       ; |RS232|Selector22~1       ; out0             ;
+; |RS232|Selector22~2       ; |RS232|Selector22~2       ; out0             ;
+; |RS232|Selector22~3       ; |RS232|Selector22~3       ; out0             ;
+; |RS232|Selector22~4       ; |RS232|Selector22~4       ; out0             ;
+; |RS232|Selector23~0       ; |RS232|Selector23~0       ; out0             ;
+; |RS232|Selector23~1       ; |RS232|Selector23~1       ; out0             ;
+; |RS232|Selector23~2       ; |RS232|Selector23~2       ; out0             ;
+; |RS232|Selector23~3       ; |RS232|Selector23~3       ; out0             ;
+; |RS232|Selector23~4       ; |RS232|Selector23~4       ; out0             ;
+; |RS232|Selector24~0       ; |RS232|Selector24~0       ; out0             ;
+; |RS232|Selector24~1       ; |RS232|Selector24~1       ; out0             ;
+; |RS232|Selector24~2       ; |RS232|Selector24~2       ; out0             ;
+; |RS232|Selector24~3       ; |RS232|Selector24~3       ; out0             ;
+; |RS232|Selector24~4       ; |RS232|Selector24~4       ; out0             ;
+; |RS232|Selector25~0       ; |RS232|Selector25~0       ; out0             ;
+; |RS232|Selector25~1       ; |RS232|Selector25~1       ; out0             ;
+; |RS232|Selector25~2       ; |RS232|Selector25~2       ; out0             ;
+; |RS232|Selector25~3       ; |RS232|Selector25~3       ; out0             ;
+; |RS232|Selector25~4       ; |RS232|Selector25~4       ; out0             ;
+; |RS232|Selector26~0       ; |RS232|Selector26~0       ; out0             ;
+; |RS232|Selector26~1       ; |RS232|Selector26~1       ; out0             ;
+; |RS232|Selector26~2       ; |RS232|Selector26~2       ; out0             ;
+; |RS232|Selector26~3       ; |RS232|Selector26~3       ; out0             ;
+; |RS232|Selector26~4       ; |RS232|Selector26~4       ; out0             ;
+; |RS232|Selector27~0       ; |RS232|Selector27~0       ; out0             ;
+; |RS232|Selector27~1       ; |RS232|Selector27~1       ; out0             ;
+; |RS232|Selector27~2       ; |RS232|Selector27~2       ; out0             ;
+; |RS232|Selector27~3       ; |RS232|Selector27~3       ; out0             ;
+; |RS232|Selector27~4       ; |RS232|Selector27~4       ; out0             ;
+; |RS232|Selector28~0       ; |RS232|Selector28~0       ; out0             ;
+; |RS232|Selector28~1       ; |RS232|Selector28~1       ; out0             ;
+; |RS232|Selector28~2       ; |RS232|Selector28~2       ; out0             ;
+; |RS232|Selector28~3       ; |RS232|Selector28~3       ; out0             ;
+; |RS232|Selector28~4       ; |RS232|Selector28~4       ; out0             ;
+; |RS232|Selector29~0       ; |RS232|Selector29~0       ; out0             ;
+; |RS232|Selector29~1       ; |RS232|Selector29~1       ; out0             ;
+; |RS232|Selector29~2       ; |RS232|Selector29~2       ; out0             ;
+; |RS232|Selector29~3       ; |RS232|Selector29~3       ; out0             ;
+; |RS232|Selector29~4       ; |RS232|Selector29~4       ; out0             ;
+; |RS232|Selector30~0       ; |RS232|Selector30~0       ; out0             ;
+; |RS232|Selector30~1       ; |RS232|Selector30~1       ; out0             ;
+; |RS232|Selector30~2       ; |RS232|Selector30~2       ; out0             ;
+; |RS232|Selector30~3       ; |RS232|Selector30~3       ; out0             ;
+; |RS232|Selector30~4       ; |RS232|Selector30~4       ; out0             ;
+; |RS232|Selector31~0       ; |RS232|Selector31~0       ; out0             ;
+; |RS232|Selector31~1       ; |RS232|Selector31~1       ; out0             ;
+; |RS232|Selector31~2       ; |RS232|Selector31~2       ; out0             ;
+; |RS232|Selector31~3       ; |RS232|Selector31~3       ; out0             ;
+; |RS232|Selector31~4       ; |RS232|Selector31~4       ; out0             ;
+; |RS232|Selector32~3       ; |RS232|Selector32~3       ; out0             ;
+; |RS232|Selector32~4       ; |RS232|Selector32~4       ; out0             ;
+; |RS232|Selector33~4       ; |RS232|Selector33~4       ; out0             ;
+; |RS232|Add0~3             ; |RS232|Add0~3             ; out0             ;
+; |RS232|Add0~4             ; |RS232|Add0~4             ; out0             ;
+; |RS232|Add0~5             ; |RS232|Add0~5             ; out0             ;
+; |RS232|Add0~6             ; |RS232|Add0~6             ; out0             ;
+; |RS232|Add0~7             ; |RS232|Add0~7             ; out0             ;
+; |RS232|Add0~8             ; |RS232|Add0~8             ; out0             ;
+; |RS232|Add0~9             ; |RS232|Add0~9             ; out0             ;
+; |RS232|Add0~10            ; |RS232|Add0~10            ; out0             ;
+; |RS232|Add0~11            ; |RS232|Add0~11            ; out0             ;
+; |RS232|Add0~12            ; |RS232|Add0~12            ; out0             ;
+; |RS232|Add0~13            ; |RS232|Add0~13            ; out0             ;
+; |RS232|Add0~14            ; |RS232|Add0~14            ; out0             ;
+; |RS232|Add0~15            ; |RS232|Add0~15            ; out0             ;
+; |RS232|Add0~16            ; |RS232|Add0~16            ; out0             ;
+; |RS232|Add0~17            ; |RS232|Add0~17            ; out0             ;
+; |RS232|Add0~18            ; |RS232|Add0~18            ; out0             ;
+; |RS232|Add0~19            ; |RS232|Add0~19            ; out0             ;
+; |RS232|Add0~20            ; |RS232|Add0~20            ; out0             ;
+; |RS232|Add0~21            ; |RS232|Add0~21            ; out0             ;
+; |RS232|Add0~22            ; |RS232|Add0~22            ; out0             ;
+; |RS232|Add0~23            ; |RS232|Add0~23            ; out0             ;
+; |RS232|Add0~24            ; |RS232|Add0~24            ; out0             ;
+; |RS232|Add0~25            ; |RS232|Add0~25            ; out0             ;
+; |RS232|Add0~26            ; |RS232|Add0~26            ; out0             ;
+; |RS232|Add0~27            ; |RS232|Add0~27            ; out0             ;
+; |RS232|Add0~28            ; |RS232|Add0~28            ; out0             ;
+; |RS232|Add0~29            ; |RS232|Add0~29            ; out0             ;
+; |RS232|Add0~30            ; |RS232|Add0~30            ; out0             ;
+; |RS232|Add0~31            ; |RS232|Add0~31            ; out0             ;
+; |RS232|Add0~32            ; |RS232|Add0~32            ; out0             ;
+; |RS232|Add0~33            ; |RS232|Add0~33            ; out0             ;
+; |RS232|Add0~34            ; |RS232|Add0~34            ; out0             ;
+; |RS232|Add0~35            ; |RS232|Add0~35            ; out0             ;
+; |RS232|Add0~36            ; |RS232|Add0~36            ; out0             ;
+; |RS232|Add0~37            ; |RS232|Add0~37            ; out0             ;
+; |RS232|Add0~38            ; |RS232|Add0~38            ; out0             ;
++---------------------------+---------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++--------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                 ;
++---------------------------+---------------------------+------------------+
+; Node Name                 ; Output Port Name          ; Output Port Type ;
++---------------------------+---------------------------+------------------+
+; |RS232|BitClksCounter~0   ; |RS232|BitClksCounter~0   ; out              ;
+; |RS232|BitClksCounter~1   ; |RS232|BitClksCounter~1   ; out              ;
+; |RS232|BitClksCounter~2   ; |RS232|BitClksCounter~2   ; out              ;
+; |RS232|BitClksCounter~3   ; |RS232|BitClksCounter~3   ; out              ;
+; |RS232|BitClksCounter~4   ; |RS232|BitClksCounter~4   ; out              ;
+; |RS232|BitClksCounter~5   ; |RS232|BitClksCounter~5   ; out              ;
+; |RS232|BitClksCounter~6   ; |RS232|BitClksCounter~6   ; out              ;
+; |RS232|BitClksCounter~7   ; |RS232|BitClksCounter~7   ; out              ;
+; |RS232|BitClksCounter~8   ; |RS232|BitClksCounter~8   ; out              ;
+; |RS232|BitClksCounter~9   ; |RS232|BitClksCounter~9   ; out              ;
+; |RS232|BitClksCounter~10  ; |RS232|BitClksCounter~10  ; out              ;
+; |RS232|BitClksCounter~11  ; |RS232|BitClksCounter~11  ; out              ;
+; |RS232|BitClksCounter~12  ; |RS232|BitClksCounter~12  ; out              ;
+; |RS232|BitClksCounter~13  ; |RS232|BitClksCounter~13  ; out              ;
+; |RS232|BitClksCounter~14  ; |RS232|BitClksCounter~14  ; out              ;
+; |RS232|BitClksCounter~15  ; |RS232|BitClksCounter~15  ; out              ;
+; |RS232|BitClksCounter~16  ; |RS232|BitClksCounter~16  ; out              ;
+; |RS232|BitClksCounter~17  ; |RS232|BitClksCounter~17  ; out              ;
+; |RS232|BitClksCounter~21  ; |RS232|BitClksCounter~21  ; out              ;
+; |RS232|BitClksCounter~22  ; |RS232|BitClksCounter~22  ; out              ;
+; |RS232|BitClksCounter~23  ; |RS232|BitClksCounter~23  ; out              ;
+; |RS232|BitClksCounter~24  ; |RS232|BitClksCounter~24  ; out              ;
+; |RS232|BitClksCounter~25  ; |RS232|BitClksCounter~25  ; out              ;
+; |RS232|BitClksCounter~26  ; |RS232|BitClksCounter~26  ; out              ;
+; |RS232|BitClksCounter~27  ; |RS232|BitClksCounter~27  ; out              ;
+; |RS232|BitClksCounter~28  ; |RS232|BitClksCounter~28  ; out              ;
+; |RS232|BitClksCounter~29  ; |RS232|BitClksCounter~29  ; out              ;
+; |RS232|BitClksCounter~30  ; |RS232|BitClksCounter~30  ; out              ;
+; |RS232|BitClksCounter~31  ; |RS232|BitClksCounter~31  ; out              ;
+; |RS232|BitClksCounter~32  ; |RS232|BitClksCounter~32  ; out              ;
+; |RS232|BitClksCounter~33  ; |RS232|BitClksCounter~33  ; out              ;
+; |RS232|BitClksCounter~34  ; |RS232|BitClksCounter~34  ; out              ;
+; |RS232|BitClksCounter~35  ; |RS232|BitClksCounter~35  ; out              ;
+; |RS232|BitClksCounter~36  ; |RS232|BitClksCounter~36  ; out              ;
+; |RS232|BitClksCounter~37  ; |RS232|BitClksCounter~37  ; out              ;
+; |RS232|BitClksCounter~38  ; |RS232|BitClksCounter~38  ; out              ;
+; |RS232|BitClksCounter~39  ; |RS232|BitClksCounter~39  ; out              ;
+; |RS232|BitCounter~4       ; |RS232|BitCounter~4       ; out              ;
+; |RS232|BitCounter[3]      ; |RS232|BitCounter[3]      ; regout           ;
+; |RS232|BitClksCounter[2]  ; |RS232|BitClksCounter[2]  ; regout           ;
+; |RS232|BitClksCounter[3]  ; |RS232|BitClksCounter[3]  ; regout           ;
+; |RS232|BitClksCounter[4]  ; |RS232|BitClksCounter[4]  ; regout           ;
+; |RS232|BitClksCounter[5]  ; |RS232|BitClksCounter[5]  ; regout           ;
+; |RS232|BitClksCounter[6]  ; |RS232|BitClksCounter[6]  ; regout           ;
+; |RS232|BitClksCounter[7]  ; |RS232|BitClksCounter[7]  ; regout           ;
+; |RS232|BitClksCounter[8]  ; |RS232|BitClksCounter[8]  ; regout           ;
+; |RS232|BitClksCounter[9]  ; |RS232|BitClksCounter[9]  ; regout           ;
+; |RS232|BitClksCounter[10] ; |RS232|BitClksCounter[10] ; regout           ;
+; |RS232|BitClksCounter[11] ; |RS232|BitClksCounter[11] ; regout           ;
+; |RS232|BitClksCounter[12] ; |RS232|BitClksCounter[12] ; regout           ;
+; |RS232|BitClksCounter[13] ; |RS232|BitClksCounter[13] ; regout           ;
+; |RS232|BitClksCounter[14] ; |RS232|BitClksCounter[14] ; regout           ;
+; |RS232|BitClksCounter[15] ; |RS232|BitClksCounter[15] ; regout           ;
+; |RS232|BitClksCounter[16] ; |RS232|BitClksCounter[16] ; regout           ;
+; |RS232|BitClksCounter[17] ; |RS232|BitClksCounter[17] ; regout           ;
+; |RS232|BitClksCounter[18] ; |RS232|BitClksCounter[18] ; regout           ;
+; |RS232|BitClksCounter[19] ; |RS232|BitClksCounter[19] ; regout           ;
+; |RS232|BitClksCounter[20] ; |RS232|BitClksCounter[20] ; regout           ;
+; |RS232|Selector0~1        ; |RS232|Selector0~1        ; out0             ;
+; |RS232|Selector0~2        ; |RS232|Selector0~2        ; out0             ;
+; |RS232|Selector1~1        ; |RS232|Selector1~1        ; out0             ;
+; |RS232|Selector1~4        ; |RS232|Selector1~4        ; out0             ;
+; |RS232|Selector2~3        ; |RS232|Selector2~3        ; out0             ;
+; |RS232|Selector2~4        ; |RS232|Selector2~4        ; out0             ;
+; |RS232|Selector3~2        ; |RS232|Selector3~2        ; out0             ;
+; |RS232|Selector13~0       ; |RS232|Selector13~0       ; out0             ;
+; |RS232|Selector13~1       ; |RS232|Selector13~1       ; out0             ;
+; |RS232|Selector13~2       ; |RS232|Selector13~2       ; out0             ;
+; |RS232|Selector13~3       ; |RS232|Selector13~3       ; out0             ;
+; |RS232|Selector13~4       ; |RS232|Selector13~4       ; out0             ;
+; |RS232|Selector14~0       ; |RS232|Selector14~0       ; out0             ;
+; |RS232|Selector14~1       ; |RS232|Selector14~1       ; out0             ;
+; |RS232|Selector14~2       ; |RS232|Selector14~2       ; out0             ;
+; |RS232|Selector14~3       ; |RS232|Selector14~3       ; out0             ;
+; |RS232|Selector14~4       ; |RS232|Selector14~4       ; out0             ;
+; |RS232|Selector15~0       ; |RS232|Selector15~0       ; out0             ;
+; |RS232|Selector15~1       ; |RS232|Selector15~1       ; out0             ;
+; |RS232|Selector15~2       ; |RS232|Selector15~2       ; out0             ;
+; |RS232|Selector15~3       ; |RS232|Selector15~3       ; out0             ;
+; |RS232|Selector15~4       ; |RS232|Selector15~4       ; out0             ;
+; |RS232|Selector16~0       ; |RS232|Selector16~0       ; out0             ;
+; |RS232|Selector16~1       ; |RS232|Selector16~1       ; out0             ;
+; |RS232|Selector16~2       ; |RS232|Selector16~2       ; out0             ;
+; |RS232|Selector16~3       ; |RS232|Selector16~3       ; out0             ;
+; |RS232|Selector16~4       ; |RS232|Selector16~4       ; out0             ;
+; |RS232|Selector17~0       ; |RS232|Selector17~0       ; out0             ;
+; |RS232|Selector17~1       ; |RS232|Selector17~1       ; out0             ;
+; |RS232|Selector17~2       ; |RS232|Selector17~2       ; out0             ;
+; |RS232|Selector17~3       ; |RS232|Selector17~3       ; out0             ;
+; |RS232|Selector17~4       ; |RS232|Selector17~4       ; out0             ;
+; |RS232|Selector18~0       ; |RS232|Selector18~0       ; out0             ;
+; |RS232|Selector18~1       ; |RS232|Selector18~1       ; out0             ;
+; |RS232|Selector18~2       ; |RS232|Selector18~2       ; out0             ;
+; |RS232|Selector18~3       ; |RS232|Selector18~3       ; out0             ;
+; |RS232|Selector18~4       ; |RS232|Selector18~4       ; out0             ;
+; |RS232|Selector19~0       ; |RS232|Selector19~0       ; out0             ;
+; |RS232|Selector19~1       ; |RS232|Selector19~1       ; out0             ;
+; |RS232|Selector19~2       ; |RS232|Selector19~2       ; out0             ;
+; |RS232|Selector19~3       ; |RS232|Selector19~3       ; out0             ;
+; |RS232|Selector19~4       ; |RS232|Selector19~4       ; out0             ;
+; |RS232|Selector20~0       ; |RS232|Selector20~0       ; out0             ;
+; |RS232|Selector20~1       ; |RS232|Selector20~1       ; out0             ;
+; |RS232|Selector20~2       ; |RS232|Selector20~2       ; out0             ;
+; |RS232|Selector20~3       ; |RS232|Selector20~3       ; out0             ;
+; |RS232|Selector20~4       ; |RS232|Selector20~4       ; out0             ;
+; |RS232|Selector21~0       ; |RS232|Selector21~0       ; out0             ;
+; |RS232|Selector21~1       ; |RS232|Selector21~1       ; out0             ;
+; |RS232|Selector21~2       ; |RS232|Selector21~2       ; out0             ;
+; |RS232|Selector21~3       ; |RS232|Selector21~3       ; out0             ;
+; |RS232|Selector21~4       ; |RS232|Selector21~4       ; out0             ;
+; |RS232|Selector22~0       ; |RS232|Selector22~0       ; out0             ;
+; |RS232|Selector22~1       ; |RS232|Selector22~1       ; out0             ;
+; |RS232|Selector22~2       ; |RS232|Selector22~2       ; out0             ;
+; |RS232|Selector22~3       ; |RS232|Selector22~3       ; out0             ;
+; |RS232|Selector22~4       ; |RS232|Selector22~4       ; out0             ;
+; |RS232|Selector23~0       ; |RS232|Selector23~0       ; out0             ;
+; |RS232|Selector23~1       ; |RS232|Selector23~1       ; out0             ;
+; |RS232|Selector23~2       ; |RS232|Selector23~2       ; out0             ;
+; |RS232|Selector23~3       ; |RS232|Selector23~3       ; out0             ;
+; |RS232|Selector23~4       ; |RS232|Selector23~4       ; out0             ;
+; |RS232|Selector24~0       ; |RS232|Selector24~0       ; out0             ;
+; |RS232|Selector24~1       ; |RS232|Selector24~1       ; out0             ;
+; |RS232|Selector24~2       ; |RS232|Selector24~2       ; out0             ;
+; |RS232|Selector24~3       ; |RS232|Selector24~3       ; out0             ;
+; |RS232|Selector24~4       ; |RS232|Selector24~4       ; out0             ;
+; |RS232|Selector25~0       ; |RS232|Selector25~0       ; out0             ;
+; |RS232|Selector25~1       ; |RS232|Selector25~1       ; out0             ;
+; |RS232|Selector25~2       ; |RS232|Selector25~2       ; out0             ;
+; |RS232|Selector25~3       ; |RS232|Selector25~3       ; out0             ;
+; |RS232|Selector25~4       ; |RS232|Selector25~4       ; out0             ;
+; |RS232|Selector26~0       ; |RS232|Selector26~0       ; out0             ;
+; |RS232|Selector26~1       ; |RS232|Selector26~1       ; out0             ;
+; |RS232|Selector26~2       ; |RS232|Selector26~2       ; out0             ;
+; |RS232|Selector26~3       ; |RS232|Selector26~3       ; out0             ;
+; |RS232|Selector26~4       ; |RS232|Selector26~4       ; out0             ;
+; |RS232|Selector27~0       ; |RS232|Selector27~0       ; out0             ;
+; |RS232|Selector27~1       ; |RS232|Selector27~1       ; out0             ;
+; |RS232|Selector27~2       ; |RS232|Selector27~2       ; out0             ;
+; |RS232|Selector27~3       ; |RS232|Selector27~3       ; out0             ;
+; |RS232|Selector27~4       ; |RS232|Selector27~4       ; out0             ;
+; |RS232|Selector28~0       ; |RS232|Selector28~0       ; out0             ;
+; |RS232|Selector28~1       ; |RS232|Selector28~1       ; out0             ;
+; |RS232|Selector28~2       ; |RS232|Selector28~2       ; out0             ;
+; |RS232|Selector28~3       ; |RS232|Selector28~3       ; out0             ;
+; |RS232|Selector28~4       ; |RS232|Selector28~4       ; out0             ;
+; |RS232|Selector29~0       ; |RS232|Selector29~0       ; out0             ;
+; |RS232|Selector29~1       ; |RS232|Selector29~1       ; out0             ;
+; |RS232|Selector29~2       ; |RS232|Selector29~2       ; out0             ;
+; |RS232|Selector29~3       ; |RS232|Selector29~3       ; out0             ;
+; |RS232|Selector29~4       ; |RS232|Selector29~4       ; out0             ;
+; |RS232|Selector30~0       ; |RS232|Selector30~0       ; out0             ;
+; |RS232|Selector30~1       ; |RS232|Selector30~1       ; out0             ;
+; |RS232|Selector30~2       ; |RS232|Selector30~2       ; out0             ;
+; |RS232|Selector30~3       ; |RS232|Selector30~3       ; out0             ;
+; |RS232|Selector30~4       ; |RS232|Selector30~4       ; out0             ;
+; |RS232|Selector31~0       ; |RS232|Selector31~0       ; out0             ;
+; |RS232|Selector31~1       ; |RS232|Selector31~1       ; out0             ;
+; |RS232|Selector31~2       ; |RS232|Selector31~2       ; out0             ;
+; |RS232|Selector31~3       ; |RS232|Selector31~3       ; out0             ;
+; |RS232|Selector31~4       ; |RS232|Selector31~4       ; out0             ;
+; |RS232|Selector32~3       ; |RS232|Selector32~3       ; out0             ;
+; |RS232|Selector32~4       ; |RS232|Selector32~4       ; out0             ;
+; |RS232|Selector33~4       ; |RS232|Selector33~4       ; out0             ;
+; |RS232|Add0~3             ; |RS232|Add0~3             ; out0             ;
+; |RS232|Add0~4             ; |RS232|Add0~4             ; out0             ;
+; |RS232|Add0~5             ; |RS232|Add0~5             ; out0             ;
+; |RS232|Add0~6             ; |RS232|Add0~6             ; out0             ;
+; |RS232|Add0~7             ; |RS232|Add0~7             ; out0             ;
+; |RS232|Add0~8             ; |RS232|Add0~8             ; out0             ;
+; |RS232|Add0~9             ; |RS232|Add0~9             ; out0             ;
+; |RS232|Add0~10            ; |RS232|Add0~10            ; out0             ;
+; |RS232|Add0~11            ; |RS232|Add0~11            ; out0             ;
+; |RS232|Add0~12            ; |RS232|Add0~12            ; out0             ;
+; |RS232|Add0~13            ; |RS232|Add0~13            ; out0             ;
+; |RS232|Add0~14            ; |RS232|Add0~14            ; out0             ;
+; |RS232|Add0~15            ; |RS232|Add0~15            ; out0             ;
+; |RS232|Add0~16            ; |RS232|Add0~16            ; out0             ;
+; |RS232|Add0~17            ; |RS232|Add0~17            ; out0             ;
+; |RS232|Add0~18            ; |RS232|Add0~18            ; out0             ;
+; |RS232|Add0~19            ; |RS232|Add0~19            ; out0             ;
+; |RS232|Add0~20            ; |RS232|Add0~20            ; out0             ;
+; |RS232|Add0~21            ; |RS232|Add0~21            ; out0             ;
+; |RS232|Add0~22            ; |RS232|Add0~22            ; out0             ;
+; |RS232|Add0~23            ; |RS232|Add0~23            ; out0             ;
+; |RS232|Add0~24            ; |RS232|Add0~24            ; out0             ;
+; |RS232|Add0~25            ; |RS232|Add0~25            ; out0             ;
+; |RS232|Add0~26            ; |RS232|Add0~26            ; out0             ;
+; |RS232|Add0~27            ; |RS232|Add0~27            ; out0             ;
+; |RS232|Add0~28            ; |RS232|Add0~28            ; out0             ;
+; |RS232|Add0~29            ; |RS232|Add0~29            ; out0             ;
+; |RS232|Add0~30            ; |RS232|Add0~30            ; out0             ;
+; |RS232|Add0~31            ; |RS232|Add0~31            ; out0             ;
+; |RS232|Add0~32            ; |RS232|Add0~32            ; out0             ;
+; |RS232|Add0~33            ; |RS232|Add0~33            ; out0             ;
+; |RS232|Add0~34            ; |RS232|Add0~34            ; out0             ;
+; |RS232|Add0~35            ; |RS232|Add0~35            ; out0             ;
+; |RS232|Add0~36            ; |RS232|Add0~36            ; out0             ;
+; |RS232|Add0~37            ; |RS232|Add0~37            ; out0             ;
+; |RS232|Add0~38            ; |RS232|Add0~38            ; out0             ;
++---------------------------+---------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Fri Mar 01 14:46:40 2019
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off RS323 -c RS323
+Info: Using vector source file "C:/Users/0xCC/Desktop/CPU FPGA/RS323 Interface/RS323.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      41.81 %
+Info: Number of transitions in simulation is 2718
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 151 megabytes
+    Info: Processing ended: Fri Mar 01 14:46:40 2019
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

@@ -1,0 +1,146 @@
+GED
+
+	Undo Commands
+	     1.	Insert Bus
+	     2.	Properties
+	     3.	Properties
+	     4.	Insert Symbol
+	     5.	Insert Node
+	     6.	Move
+	     7.	Properties
+	     8.	Paste
+	     9.	Delete
+	    10.	Delete
+	    11.	Delete
+	    12.	Delete
+	    13.	Resize
+	    14.	Resize
+	    15.	Insert Node
+	    16.	Insert Bus
+	    17.	Properties
+	    18.	Insert Symbol
+	    19.	Resize
+	    20.	Resize
+	    21.	Resize
+	    22.	Resize
+	    23.	Resize
+	    24.	Resize
+	    25.	Resize
+	    26.	Resize
+	    27.	Insert Bus
+	    28.	Resize
+	    29.	Resize
+	    30.	Resize
+	    31.	Resize
+	    32.	Move
+	    33.	Move
+	    34.	Move
+	    35.	Move
+	    36.	Resize
+	    37.	Move
+	    38.	Resize
+	    39.	Move
+	    40.	Insert Node
+	    41.	Move
+	    42.	Move
+	    43.	Resize
+	    44.	Move
+	    45.	Move
+	    46.	Move
+	    47.	Move
+	    48.	Insert Node
+	    49.	Move
+	    50.	Paste
+	    51.	Delete
+	    52.	Delete
+	    53.	Resize
+	    54.	Move
+	    55.	Insert Node
+	    56.	Move
+	    57.	Move
+	    58.	Insert Bus
+	    59.	Move
+	    60.	Resize
+	    61.	Move
+	    62.	Move
+	    63.	Move
+	    64.	Delete
+	    65.	Delete
+	    66.	Delete
+	    67.	Delete
+	    68.	Delete
+	    69.	Delete
+	    70.	Delete
+	    71.	Resize
+	    72.	Move
+	    73.	Move
+	    74.	Move
+	    75.	Move
+	    76.	Move
+	    77.	Move
+	    78.	Move
+	    79.	Move
+	    80.	Move
+	    81.	Move
+	    82.	Move
+	    83.	Move
+	    84.	Move
+	    85.	Move
+	    86.	Move
+	    87.	Delete
+	    88.	Move
+	    89.	Move
+	    90.	Move
+	    91.	Move
+	    92.	Move
+	    93.	Move
+	    94.	Move
+	    95.	Move
+	    96.	Move
+	    97.	Move
+	    98.	Move
+	    99.	Move
+	   100.	Insert Symbol
+
+
+RPW
+
+	Undo Commands
+	     1.	||Compilation Report||Flow Summary
+
+
+RPW
+
+	Undo Commands
+	     1.	||Simulation Report||Simulator||Simulation Waveforms
+	     2.	||Simulation Report||Simulator||Logical Memories|||RAM|lpm_ram_dq1:inst|altsyncram:altsyncram_component|altsyncram_kgm1:auto_generated|ALTSYNCRAM
+	     3.	||Simulation Report||Simulator||Simulation Waveforms
+	     4.	||Simulation Report||Simulator||Logical Memories|||RAM|lpm_ram_dq1:inst|altsyncram:altsyncram_component|altsyncram_kgm1:auto_generated|ALTSYNCRAM
+	     5.	||Simulation Report||Simulator||Simulation Waveforms
+	     6.	||Simulation Report||Simulator||Logical Memories|||RAM|lpm_ram_dq1:inst|altsyncram:altsyncram_component|altsyncram_kgm1:auto_generated|ALTSYNCRAM
+	     7.	||Simulation Report||Simulator||Simulation Waveforms
+	     8.	||Simulation Report||Simulator||Logical Memories|||RAM|lpm_ram_dq1:inst|altsyncram:altsyncram_component|altsyncram_kgm1:auto_generated|ALTSYNCRAM
+	     9.	||Simulation Report||Simulator||Simulation Waveforms
+	    10.	||Simulation Report||Simulator||Logical Memories|||RAM|lpm_ram_dq1:inst|altsyncram:altsyncram_component|altsyncram_kgm1:auto_generated|ALTSYNCRAM
+	    11.	||Simulation Report||Simulator||Simulation Waveforms
+	    12.	||Simulation Report||Simulator||Logical Memories|||RAM|lpm_ram_dq1:inst|altsyncram:altsyncram_component|altsyncram_kgm1:auto_generated|ALTSYNCRAM
+	    13.	||Simulation Report||Simulator||Simulation Waveforms
+
+
+WED
+
+	Undo Commands
+	     1.	Edit Waveform
+	     2.	Edit Waveform
+	     3.	Edit Waveform
+	     4.	Node or Bus Properties
+			 *** 
+	     5.	Insert Node or Bus
+	     6.	Edit Waveform
+	     7.	Drop Node
+			 *** 
+	     8.	Drop Node
+			 *** 
+	     9.	Insert Node or Bus
+
+

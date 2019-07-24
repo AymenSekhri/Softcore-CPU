@@ -1,0 +1,20 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+Entity LCDPort is 
+	Port(CLK: in std_logic;
+		DeviceControl : in std_logic_vector(7 downto 0);
+		DataIn : in std_logic_vector(31 downto 0);
+		DataOut : out std_logic_vector(19 downto 0);
+End Entity;
+Architecture CPU of LCDPort is
+Begin
+	Process(CLK) is
+	Begin
+		If CLK'event and CLK= '0' and DeviceControl = x"20" then
+			DataOut <= DataIn(19 downto 0);
+		Else
+			DataOut <= (others=>'0');
+		End if;
+	End Process;
+End Architecture;

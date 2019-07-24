@@ -1,0 +1,78 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+Entity ControlUnit is 
+	Port(Clk : in std_logic;
+		MAR_OE,MAR_WE,MBRO_OE,MBRO_WE,RAM_WE,MBRI_OE,MBRI_WE: out std_logic;
+		ZAddressOut : out std_logic_vector(31 downto 0);
+		NewLoop : out std_logic);
+End Entity;
+Architecture CPU of ControlUnit is
+Signal finalout : std_logic_vector(7 downto 0);
+Signal AddressOE : std_logic := '0';
+Signal AddressTemp : std_logic_vector(31 downto 0) := x"00000000";
+TYPE State_Type IS (Fetch0,Fetch1,Fetch2,Fetch3,Fetch4,Fetch5,Fetch6,HALT);
+SIGNAL State : State_Type := Fetch0;
+Begin
+
+	Process (Clk)
+	Begin
+		If CLk'event and Clk='1' Then
+			Case State is 
+				When Fetch0 => 
+					State <= Fetch1;
+				When Fetch1 => 
+					AddressTemp <= AddressTemp + 4;
+					State <= Fetch2;
+				When Fetch2 => 
+					State <= Fetch3;
+				When Fetch3 => 
+					State <= Fetch4;
+				When Fetch4 => 
+					State <= Fetch5;
+				When Fetch5 => 
+					State <= Fetch0;
+				When HALT =>
+					State <= HALT;
+				When Others =>
+					State <= HALT;
+				End Case;
+		End if;
+	End Process;
+	
+	Process (State)
+	Begin
+		AddressOE <= '0';
+		Case State is
+			When Fetch0 =>
+				finalout <= "10000010"; --MemR1
+				AddressOE <= '1';
+			When  Fetch1 => -- IP <- MBR
+				finalout <= "10000001"; --MemR2
+				AddressOE <= '0';
+			When  Fetch2 =>
+				finalout <= "10001001"; --MemR3
+			When  Fetch3 => 
+				finalout <= "10000001"; --MemR4
+			When  Fetch4 =>
+				finalout <= "10001001"; --MemR5
+			When  Fetch5 =>
+				finalout <= "00000101"; --MemR6
+			When Others =>
+				finalout <= "10000000";
+		End Case;
+		
+	
+	End Process;
+	ZAddressOut <= AddressTemp When AddressOE = '1' Else
+					(others=>'Z');
+	MAR_OE <= finalout(0);
+	MAR_WE <= finalout(1);
+	MBRO_OE <= finalout(2);
+	MBRO_WE <= finalout(3);
+	MBRI_OE <= finalout(4);
+	MBRI_WE <= finalout(5);
+	RAM_WE <= finalout(6);
+	NewLoop <= finalout(7);
+	
+End Architecture;

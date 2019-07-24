@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu Feb 28 23:09:45 2019
+Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
+Revision Name : RS323
+Top-level Entity Name : RS232
+Family : Cyclone II
+Device : EP2C5AF256I8
+Timing Models : Final
+Total logic elements : 50 / 4,608 ( 1 % )
+    Total combinational functions : 42 / 4,608 ( < 1 % )
+    Dedicated logic registers : 35 / 4,608 ( < 1 % )
+Total registers : 35
+Total pins : 11 / 158 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 0 / 119,808 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 26 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

@@ -1,0 +1,121 @@
+Flow report for RS323
+Thu Feb 28 23:09:47 2019
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Flow Summary                                                                      ;
++------------------------------------+----------------------------------------------+
+; Flow Status                        ; Successful - Thu Feb 28 23:09:47 2019        ;
+; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
+; Revision Name                      ; RS323                                        ;
+; Top-level Entity Name              ; RS232                                        ;
+; Family                             ; Cyclone II                                   ;
+; Device                             ; EP2C5AF256I8                                 ;
+; Timing Models                      ; Final                                        ;
+; Met timing requirements            ; Yes                                          ;
+; Total logic elements               ; 50 / 4,608 ( 1 % )                           ;
+;     Total combinational functions  ; 42 / 4,608 ( < 1 % )                         ;
+;     Dedicated logic registers      ; 35 / 4,608 ( < 1 % )                         ;
+; Total registers                    ; 35                                           ;
+; Total pins                         ; 11 / 158 ( 7 % )                             ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 0 / 119,808 ( 0 % )                          ;
+; Embedded Multiplier 9-bit elements ; 0 / 26 ( 0 % )                               ;
+; Total PLLs                         ; 0 / 2 ( 0 % )                                ;
++------------------------------------+----------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 02/28/2019 23:09:42 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; RS323               ;
++-------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                   ;
++------------------------------------+--------------------------------+---------------+-------------+----------------+
+; Assignment Name                    ; Value                          ; Default Value ; Entity Name ; Section Id     ;
++------------------------------------+--------------------------------+---------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID              ; 79461732614332.155139178105752 ; --            ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP             ; 125                            ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP             ; -40                            ; --            ; --          ; --             ;
+; PARTITION_COLOR                    ; 16764057                       ; --            ; RS232       ; Top            ;
+; PARTITION_NETLIST_TYPE             ; SOURCE                         ; --            ; RS232       ; Top            ;
+; TOP_LEVEL_ENTITY                   ; RS232                          ; RS323         ; --          ; --             ;
+; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                            ; --            ; --          ; eda_blast_fpga ;
++------------------------------------+--------------------------------+---------------+-------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                           ;
++-------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++-------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis    ; 00:00:01     ; 1.0                     ; 248 MB              ; 00:00:02                           ;
+; Fitter                  ; 00:00:02     ; 1.0                     ; 228 MB              ; 00:00:02                           ;
+; Assembler               ; 00:00:00     ; 1.0                     ; 202 MB              ; 00:00:01                           ;
+; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 164 MB              ; 00:00:00                           ;
+; Total                   ; 00:00:03     ; --                      ; --                  ; 00:00:05                           ;
++-------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                          ;
++-------------------------+------------------+---------------+------------+----------------+
+; Module Name             ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
++-------------------------+------------------+---------------+------------+----------------+
+; Analysis & Synthesis    ; DESKTOP-7G1LMTB  ; Windows Vista ; 6.2        ; x86_64         ;
+; Fitter                  ; DESKTOP-7G1LMTB  ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; DESKTOP-7G1LMTB  ; Windows Vista ; 6.2        ; x86_64         ;
+; Classic Timing Analyzer ; DESKTOP-7G1LMTB  ; Windows Vista ; 6.2        ; x86_64         ;
++-------------------------+------------------+---------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off RS323 -c RS323
+quartus_fit --read_settings_files=off --write_settings_files=off RS323 -c RS323
+quartus_asm --read_settings_files=off --write_settings_files=off RS323 -c RS323
+quartus_tan --read_settings_files=off --write_settings_files=off RS323 -c RS323 --timing_analysis_only
+
+
+

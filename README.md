@@ -42,7 +42,7 @@ Sometimes programmers needs to define a certain constants or strings to be used 
 | MUL r4,r4        | 0x08   | 2    | 0x8/r4r4      | 2            |
 | AND r4,r4        | 0x09   | 2    | 0x9/r4r4      | 2            |
 | OR r4,r4         | 0x0A   | 2    | 0xA/r4r4      | 2            |
-| CMP r4,r4        | 0x0B   | 2    | 0xB/r4r4      | 2            | A<\- Oparand2  B<\-Oparand1  |
+| CMP r4,r4        | 0x0B   | 2    | 0xB/r4r4      | 2            | A<\- Oparand1  B<\-Oparand2  |
 | ADD r4,imm32     | 0x0C   | 6    | 0xC/r4/imm32  | 2            |
 | SUB r4,imm32     | 0x0D   | 6    | 0xD/r4/imm32  | 2            |
 | MUL r4,imm32     | 0x0E   | 6    | 0xE/r4/imm32  | 2            |

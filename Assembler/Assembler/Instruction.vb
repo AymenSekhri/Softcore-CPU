@@ -59,116 +59,138 @@ Public Class Instruction
         If IsDef.Value = "DB" Or IsDef.Value = "DD" Or IsDef.Value = "DS" Then
             Array.Resize(MachineCode, 256)
             If IsDef.Value = "DB" Then
-				For Each m As Match In Regex.Matches(mnemonic.Substring(IsDef.Index + 2), "[^ ^\t]+[hH]")
-
-					If Regex.Match(m.Value.Remove(m.Value.Length - 1), "[A-Fa-f0-9]").Success Then
-						If System.Convert.ToInt32(m.Value.Remove(m.Value.Length - 1), 16) < 256 Then
-							MachineCode(Size) = System.Convert.ToInt32(m.Value.Remove(m.Value.Length - 1), 16)
-							Size = Size + 1
-						Else
-							MyError = InstructionError.InvalidParam1
-							Exit Sub
-						End If
-					Else
-						MyError = InstructionError.InvalidParam1
-						Exit Sub
-					End If
-				Next
+                MyError = DecodeDB(mnemonic, IsDef)
+                If MyError <> InstructionError.GoodInstruction Then
+                    Exit Sub
+                End If
             ElseIf IsDef.Value = "DD" Then
-				For Each m As Match In Regex.Matches(mnemonic.Substring(IsDef.Index + 2), "[^ ^\t]+[hH]")
-					If Regex.Match(m.Value.Remove(m.Value.Length - 1), "[A-Fa-f0-9]").Success Then
-						Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(m.Value.Remove(m.Value.Length - 1), 16))
-						MachineCode(Size + 0) = ImmData(3)
-						MachineCode(Size + 1) = ImmData(2)
-						MachineCode(Size + 2) = ImmData(1)
-						MachineCode(Size + 3) = ImmData(0)
-						Size = Size + 4
-					Else
-						MyError = InstructionError.InvalidParam1
-						Exit Sub
-					End If
-				Next
+                MyError = DecodeDD(mnemonic, IsDef)
+                If MyError <> InstructionError.GoodInstruction Then
+                    Exit Sub
+                End If
             ElseIf IsDef.Value = "DS" Then
-                Dim str As String = ""
-
-                Dim strmatch As Match = Regex.Match(mnemonic.Substring(IsDef.Index + 2), """.*""")
-                If strmatch.Success Then
-                    str = strmatch.Value.Replace("""", "")
-                Else
-                    MyError = InstructionError.InvalidParam1
+                MyError = DecodeDS(mnemonic, IsDef)
+                If MyError <> InstructionError.GoodInstruction Then
                     Exit Sub
                 End If
-                For index = 0 To str.Length - 1
-                    MachineCode(Size) = Asc(str(index))
-                    Size = Size + 1
-				Next
-				Size += 1
-				MachineCode(Size) = 0
             End If
+
         Else
-            isLabled = Labled
-            GetArgs(mnemonic, OpC, Parm1, Parm2)
-            Dim instType As InstructionType = GetInstructionType(Parm1, Parm2)
-            If instType = InstructionType.InvalidType Then
-				MyError = InstructionError.UnknowInstructionType
-                Exit Sub
-            End If
-
-            MachineCode(0) = FetchOpCode(OpC, instType)
-            If MachineCode(0) = &HFF Then
-                MyError = InstructionError.UnknowInstruction
-                Exit Sub
-            End If
-            If instType = InstructionType.R32Imm32 Or instType = InstructionType.R32M32 Then
-                Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm2.Replace("[", "").Replace("]", "").Replace("H", ""), 16))
-                MachineCode(1) = GetRegisterCode(Parm1) << 4
-                MachineCode(2) = ImmData(3)
-                MachineCode(3) = ImmData(2)
-                MachineCode(4) = ImmData(1)
-                MachineCode(5) = ImmData(0)
-            ElseIf instType = InstructionType.R32R32 Or instType = InstructionType.ReadR32Indirect Or instType = InstructionType.WriteR32Indirect Then
-                MachineCode(1) = GetRegisterCode(Parm1) << 4 Or GetRegisterCode(Parm2)
-            ElseIf instType = InstructionType.WriteR32imm Then
-                Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm2.Replace("H", ""), 16))
-                MachineCode(1) = GetRegisterCode(Parm1)
-                MachineCode(2) = ImmData(3)
-                MachineCode(3) = ImmData(2)
-                MachineCode(4) = ImmData(1)
-                MachineCode(5) = ImmData(0)
-            ElseIf instType = InstructionType.R32 Then
-                MachineCode(1) = GetRegisterCode(Parm1)
-                If OpC = "DEC" Or OpC = "INC" Or OpC = "PUSH" Or OpC = "POP" Then
-                    MachineCode(1) = MachineCode(1) << 4
-                End If
-            ElseIf instType = InstructionType.Immediate Then
-                Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm1.Replace("H", ""), 16))
-                MachineCode(1) = ImmData(3)
-                MachineCode(2) = ImmData(2)
-                MachineCode(3) = ImmData(1)
-                MachineCode(4) = ImmData(0)
-            ElseIf instType = InstructionType.r32imm8 Then
-                Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm1.Replace("H", ""), 16))
-                If ImmData(0) > 255 Then
-                    MyError = InstructionError.InvalidParam1
-                    Exit Sub
-                End If
-                MachineCode(1) = GetRegisterCode(Parm2)
-                MachineCode(2) = ImmData(0)
-            ElseIf instType <> InstructionType.None Then
-                MyError = InstructionError.UnknowInstructionType
-                Exit Sub
-            End If
-            Size = GetInstructionSize(MachineCode(0), instType)
-            Dim stringdata As String = ""
-            For index = 0 To Size - 1
-                stringdata &= MachineCode(index).ToString("X2") & " "
-            Next
+            DecodeInstruction(mnemonic, Labled, OpC, Parm1, Parm2)
         End If
 
 
 
         'MsgBox(stringdata)
     End Sub
+
+    Private Function DecodeInstruction(mnemonic As String, Labled As Boolean, ByRef OpC As String, ByRef Parm1 As String, ByRef Parm2 As String) As InstructionError
+        isLabled = Labled
+        GetArgs(mnemonic, OpC, Parm1, Parm2)
+        Dim instType As InstructionType = GetInstructionType(Parm1, Parm2)
+        If instType = InstructionType.InvalidType Then
+            Return InstructionError.UnknowInstructionType
+        End If
+
+        MachineCode(0) = FetchOpCode(OpC, instType)
+        If MachineCode(0) = &HFF Then
+            Return InstructionError.UnknowInstruction
+        End If
+        If instType = InstructionType.R32Imm32 Or instType = InstructionType.R32M32 Then
+            Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm2.Replace("[", "").Replace("]", "").Replace("H", ""), 16))
+            MachineCode(1) = GetRegisterCode(Parm1) << 4
+            MachineCode(2) = ImmData(3)
+            MachineCode(3) = ImmData(2)
+            MachineCode(4) = ImmData(1)
+            MachineCode(5) = ImmData(0)
+        ElseIf instType = InstructionType.R32R32 Or instType = InstructionType.ReadR32Indirect Or instType = InstructionType.WriteR32Indirect Then
+            MachineCode(1) = GetRegisterCode(Parm1) << 4 Or GetRegisterCode(Parm2)
+        ElseIf instType = InstructionType.WriteR32imm Then
+            Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm2.Replace("H", ""), 16))
+            MachineCode(1) = GetRegisterCode(Parm1)
+            MachineCode(2) = ImmData(3)
+            MachineCode(3) = ImmData(2)
+            MachineCode(4) = ImmData(1)
+            MachineCode(5) = ImmData(0)
+        ElseIf instType = InstructionType.R32 Then
+            MachineCode(1) = GetRegisterCode(Parm1)
+            If OpC = "DEC" Or OpC = "INC" Or OpC = "PUSH" Or OpC = "POP" Then
+                MachineCode(1) = MachineCode(1) << 4
+            End If
+        ElseIf instType = InstructionType.Immediate Then
+            Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm1.Replace("H", ""), 16))
+            MachineCode(1) = ImmData(3)
+            MachineCode(2) = ImmData(2)
+            MachineCode(3) = ImmData(1)
+            MachineCode(4) = ImmData(0)
+        ElseIf instType = InstructionType.r32imm8 Then
+            Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(Parm1.Replace("H", ""), 16))
+            If ImmData(0) > 255 Then
+                Return InstructionError.InvalidParam1
+            End If
+            MachineCode(1) = GetRegisterCode(Parm2)
+            MachineCode(2) = ImmData(0)
+        ElseIf instType <> InstructionType.None Then
+            Return InstructionError.UnknowInstructionType
+        End If
+        Size = GetInstructionSize(MachineCode(0), instType)
+        Dim stringdata As String = ""
+        For index = 0 To Size - 1
+            stringdata &= MachineCode(index).ToString("X2") & " "
+        Next
+        Return InstructionError.GoodInstruction
+    End Function
+
+    Private Function DecodeDS(mnemonic As String, IsDef As Match) As InstructionError
+        Dim str As String = ""
+        Dim strmatch As Match = Regex.Match(mnemonic.Substring(IsDef.Index + 2), """.*""")
+        If strmatch.Success Then
+            str = strmatch.Value.Replace("""", "")
+        Else
+            Return InstructionError.InvalidParam1
+        End If
+        For index = 0 To str.Length - 1
+            MachineCode(Size) = Asc(str(index))
+            Size = Size + 1
+        Next
+        Size += 1
+        MachineCode(Size) = 0
+        Return InstructionError.GoodInstruction
+    End Function
+
+    Private Function DecodeDD(mnemonic As String, IsDef As Match) As InstructionError
+        For Each m As Match In Regex.Matches(mnemonic.Substring(IsDef.Index + 2), "[^ ^\t]+[hH]")
+            If Regex.Match(m.Value.Remove(m.Value.Length - 1), "[A-Fa-f0-9]").Success Then
+                Dim ImmData() As Byte = BitConverter.GetBytes(System.Convert.ToUInt32(m.Value.Remove(m.Value.Length - 1), 16))
+                MachineCode(Size + 0) = ImmData(3)
+                MachineCode(Size + 1) = ImmData(2)
+                MachineCode(Size + 2) = ImmData(1)
+                MachineCode(Size + 3) = ImmData(0)
+                Size = Size + 4
+            Else
+                Return InstructionError.InvalidParam1
+            End If
+        Next
+        Return InstructionError.GoodInstruction
+    End Function
+
+    Private Function DecodeDB(mnemonic As String, IsDef As Match) As InstructionError
+        For Each m As Match In Regex.Matches(mnemonic.Substring(IsDef.Index + 2), "[^ ^\t]+[hH]")
+
+            If Regex.Match(m.Value.Remove(m.Value.Length - 1), "[A-Fa-f0-9]").Success Then
+                If System.Convert.ToInt32(m.Value.Remove(m.Value.Length - 1), 16) < 256 Then
+                    MachineCode(Size) = System.Convert.ToInt32(m.Value.Remove(m.Value.Length - 1), 16)
+                    Size = Size + 1
+                Else
+                    Return InstructionError.InvalidParam1
+                End If
+            Else
+                Return InstructionError.InvalidParam1
+            End If
+        Next
+        Return InstructionError.GoodInstruction
+    End Function
+
     Function GetInstructionSize(OpCode As Byte, Type As InstructionType) As Byte
         If Type = InstructionType.R32 Then
             Return 2

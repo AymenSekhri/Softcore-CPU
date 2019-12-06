@@ -77,8 +77,8 @@ Public Class Form1
 					End If
 				Next
 				If isDone = False Then
-					MsgBox(" Unkown Lable at " & index + 1)
-					Exit Sub
+                    MsgBox(" Unknown label at " & index + 1)
+                    Exit Sub
 				End If
 
 			End If

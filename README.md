@@ -1,5 +1,5 @@
 # SoftCore CPU
-This project was part of my 3rd year graduation in Electrical and Electronic Engeneering major. The CPU part has been implemented using VHDL in Quartus II 13.01 and the Assembler using VB.NET in Visual Studio 2013. The CPU has 32bit shared address/data bus with one byte addressing mode RAM, The implementation Architecture was based on Von Neumann architecture since it consists of registers, ALU (Arithmetic Logic Unit) and memory which are all connected to the same 32 bit bus along with Control Unit which controls the flow of data by control signals.<br>
+This project was part of my 3rd year graduation in Electrical and Electronic Engeneering major. The CPU part has been implemented using VHDL in Quartus II 13.01 and the Assembler using VB.NET in Visual Studio 2013. The CPU has 32bit shared address/data bus with an memory that suppports unaligned memory access, The implementation Architecture was based on Von Neumann architecture since it consists of registers, ALU (Arithmetic Logic Unit) and memory which are all connected to the same 32 bit bus along with Control Unit which controls the flow of data by control signals.<br>
 To read the full report: https://github.com/AymenSekhri/Softcore-CPU/blob/master/repport.pdf
 
 ## Assembler
